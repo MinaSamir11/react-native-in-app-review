@@ -1,0 +1,29 @@
+{
+  "name": "react-native-in-app-review",
+  "version": "1.0.4",
+  "description": "react native app review Generally, the in-app review flow (see figure 1) can be triggered at any time throughout the user journey of your app. During the flow, the user has the ability to rate your app using the 1 to 5 star system and to add an optional comment. Once submitted, the review is sent to the Play Store and eventually displayed.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "native",
+    "review",
+    "app review",
+    "android",
+    "rate your app",
+    "review is sent to the Play Store",
+    "view"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MinaSamir11/react-native-in-app-review.git"
+  },
+  "author": "Mina Samir Shafik <menasamer11@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MinaSamir11/react-native-in-app-review/issues"
+  },
+  "homepage": "https://github.com/MinaSamir11/react-native-in-app-review#readme"
+}
