@@ -3,6 +3,7 @@ package com.ibits.react_native_in_app_review;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import android.util.Log;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -40,7 +41,6 @@ public class AppReviewModule extends ReactContextBaseJavaModule {
                     // reviewed or not, or even whether the review dialog was shown. Thus, no
                     // matter the result, we continue our app flow.
                     Log.e("Review isSuccessful",""+taski.isSuccessful());
-
                 });
 
             } else {
