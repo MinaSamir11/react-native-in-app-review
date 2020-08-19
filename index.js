@@ -6,7 +6,7 @@ const { InAppReviewModule } = NativeModules;
 
 class InAppReview {
   static RequestInAppReview() {
-    if (Platform.OS === "android" && Platform.Version === 21) {
+    if (Platform.OS === "android" && Platform.Version >= 21) {
       InAppReviewModule.show();
     }
   }
