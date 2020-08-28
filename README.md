@@ -12,6 +12,71 @@ Generally, the in-app review can be triggered at any time throughout the user jo
 ```sh
 $ npm install react-native-in-app-review
 ```
+#### Standard Method
+
+**React Native 0.60 and above**
+
+Linking is not required in React Native 0.60 and above.
+
+**React Native 0.59 and below**
+
+Run `react-native link react-native-in-app-review` to link the react-native-in-app-review library.
+Then follow the instructions for your platform to link react-native-in-app-review into your project:
+
+### Manual Linking
+### Android installation 
+<details>
+  <summary>Android details</summary>
+
+Run `react-native link react-native-in-app-review` to link the react-native-in-app-review library.
+
+#### **android/settings.gradle**
+
+```gradle
+include ':react-native-in-app-review'
+project(':react-native-in-app-review').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-in-app-review/android')
+```
+
+#### **android/app/build.gradle**
+
+From version >= 5.0.0, you have to apply these changes:
+
+```diff
+dependencies {
+   ...
++    implementation project(':react-native-in-app-review')
+}
+```
+
+#### **android/gradle.properties**
+
+Migrating to AndroidX (needs version >= 5.0.0):
+
+```gradle.properties
+android.useAndroidX=true
+android.enableJetifier=true
+```
+
+#### **Then, in android/app/src/main/java/your/package/MainApplication.java:**
+
+On top, where imports are:
+
+```java
+import com.ibits.react_native_in_app_review.AppReviewPackage;
+```
+
+```java
+@Override
+protected List<ReactPackage> getPackages() {
+    return Arrays.asList(
+            new MainReactPackage(),
+            new AppReviewPackage()
+    );
+}
+```
+</details>
+
+
 # Usage 
 ```sh
 import InAppReview from 'react-native-in-app-review';
