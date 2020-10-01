@@ -105,3 +105,7 @@ In-app reviews only work on the following devices:
 
 # Please Note, Test using the Google Play Store
 * In-app reviews require your app to be published in Play Store. However, you can test your integration without publishing your app to production using either internal test tracks or internal app sharing.
+
+
+
+# TODO TASK: support iOS rating 
