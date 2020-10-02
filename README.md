@@ -20,6 +20,10 @@ This module exposes the native iOS APIs to ask the user to rate the app in the i
 
 ```sh
 $ npm install react-native-in-app-review
+
+OR,
+
+$ yarn add react-native-in-app-review
 ```
 
 # Standard Method
