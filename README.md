@@ -119,7 +119,7 @@ import InAppReview from "react-native-in-app-review";
 InAppReview.RequestInAppReview();
 ```
 
-# +Android Notes:
+# + Android Notes:
 
 # When to request an in-app review
 
@@ -140,13 +140,14 @@ In-app reviews only work on the following devices:
 - Android devices (phones and tablets) running Android 5.0 (API level 21) or higher that have the Google Play Store installed.
 - Chrome OS devices that have the Google Play Store installed.
 
-# Please Note, Test using the Google Play Store
+# Please Note, To test you integration using the Google Play Store
 
 - In-app reviews require your app to be published in Play Store. However, you can test your integration without publishing your app to production using either internal test tracks or internal app sharing.
 
-# +iOS Notes:
+# + iOS Notes:
 
 # System Rating and Review Prompts
+
 The system offers a consistent, nonintrusive way for apps to request ratings and reviews. To use this feature, you simply identify places in your app's user experience where it makes sense to ask for feedback. If the user hasn't already given feedback, the system displays an in-app prompt that asks for a rating and an optional written review. The user can supply feedback or dismiss the prompt with a single tap. (In Settings, the user can also opt out of receiving these rating prompts for all apps they have installed.) The system automatically limits the display of the prompt to three occurrences per app within a 365-day period.
 
 
