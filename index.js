@@ -2,9 +2,9 @@ import React from "react";
 
 import { NativeModules, Platform } from "react-native";
 
-const { InAppReviewModule, InAppReview } = NativeModules;
+const { InAppReviewModule, RNInAppReviewIOS } = NativeModules;
 
-const isAvailable = !!InAppReview && InAppReview.isAvailable; //ios version check
+const isAvailable = !!RNInAppReviewIOS && RNInAppReviewIOS.isAvailable; //ios version check
 
 function isVersionAvailable() {
   if (Platform.OS === "android" && Platform.Version >= 21) {
@@ -15,7 +15,7 @@ function isVersionAvailable() {
     }
     return true;
   } else if (Platform.OS === "ios") {
-    if (!InAppReview) {
+    if (!RNInAppReviewIOS) {
       throw new Error(
         "InAppReview native module not available, did you forget to link the library?"
       );
@@ -26,10 +26,10 @@ function isVersionAvailable() {
 
 export default class InAppReview {
   static RequestInAppReview() {
-    if (isVersionAvailable()) {
+    if (Platform.OS === "android" && isVersionAvailable()) {
       InAppReviewModule.show();
-    } else if (isVersionAvailable()) {
-      InAppReview.show();
+    } else if (Platform.OS === "ios" && isVersionAvailable()) {
+      RNInAppReviewIOS.requestReview();
     }
   }
 

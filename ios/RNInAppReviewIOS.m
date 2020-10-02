@@ -1,7 +1,7 @@
-#import "InAppReview.h"
+#import "RNInAppReviewIOS.h"
 #import <StoreKit/SKStoreReviewController.h>
 
-@implementation InAppReview
+@implementation RNInAppReviewIOS
 
 - (dispatch_queue_t)methodQueue
 {
@@ -17,9 +17,9 @@ RCT_EXPORT_MODULE()
   };
 }
 
-RCT_EXPORT_METHOD(show)
+RCT_EXPORT_METHOD(requestReview)
 {
-  [SKStoreReviewController show];
+  [SKStoreReviewController requestReview];
 }
 
 + (BOOL)requiresMainQueueSetup

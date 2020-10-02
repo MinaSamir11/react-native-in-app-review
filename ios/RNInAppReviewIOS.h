@@ -4,6 +4,6 @@
 #import <React/RCTBridgeModule.h>
 #endif
 
-@interface InAppReview : NSObject <RCTBridgeModule>
+@interface RNInAppReviewIOS : NSObject <RCTBridgeModule>
 
 @end

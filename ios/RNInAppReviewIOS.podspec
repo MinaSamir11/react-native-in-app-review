@@ -2,7 +2,7 @@ require "json"
 version = JSON.parse(File.read("../package.json"))["version"]
 
 Pod::Spec.new do |s|
-  s.name           = "InAppReview"
+  s.name           = "RNInAppReviewIOS"
   s.version        = version
   s.summary        = "Rating App in App Store for react native apps"
   s.homepage       = "https://github.com/MinaSamir11/react-native-in-app-review"
