@@ -116,6 +116,14 @@ import InAppReview from "react-native-in-app-review";
 ```
 
 ```javascript
+
+// This Modules is only available on android version >= 21 and iOS >= 10.3  
+
+
+// Give you result if version of device supported to rate app or not!
+InAppReview.isAvailable();
+
+// trigger UI InAppreview
 InAppReview.RequestInAppReview();
 ```
 
