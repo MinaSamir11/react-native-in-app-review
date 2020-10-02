@@ -4,10 +4,6 @@ The Google Play In-App Review API lets you prompt users to submit Play Store rat
 
 Generally, the in-app review can be triggered at any time throughout the user journey of your app. During the flow, the user has the ability to rate your app using the 1 to 5 star system and to add an optional comment. Once submitted, the review is sent to the Play Store and eventually displayed.
 
-### Important:
-
-iOS Package Belong to oblador => react-native-In-app-review Merge with react-native-store-review to target iOS Platform as package works. so if you need Bro. package only you can check out repo. throught this link: https://github.com/oblador/react-native-store-review
-
 # Android, iOS platform.
 
 # Google Play In-App Review API
@@ -149,4 +145,3 @@ In-app reviews only work on the following devices:
 - In-app reviews require your app to be published in Play Store. However, you can test your integration without publishing your app to production using either internal test tracks or internal app sharing.
 
 # iOS Notes:
-
