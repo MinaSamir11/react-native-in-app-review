@@ -140,9 +140,11 @@ In-app reviews only work on the following devices:
 - Android devices (phones and tablets) running Android 5.0 (API level 21) or higher that have the Google Play Store installed.
 - Chrome OS devices that have the Google Play Store installed.
 
-# Please Note, To test you integration using the Google Play Store
+# Please Note, To test your integration using the Google Play Store
 
 - In-app reviews require your app to be published in Play Store. However, you can test your integration without publishing your app to production using either internal test tracks or internal app sharing.
+
+_____________________________________
 
 # + iOS Notes:
 
