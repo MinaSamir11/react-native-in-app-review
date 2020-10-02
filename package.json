@@ -11,6 +11,7 @@
     "review",
     "app review",
     "in app review",
+    "react-native-in-app-review",
     "store kit",
     "android",
     "ios",
@@ -22,8 +23,7 @@
     "rating",
     "view",
     "react-component",
-    "react-native-component",
-    "mobile"
+    "react-native-component"
   ],
   "repository": {
     "type": "git",
