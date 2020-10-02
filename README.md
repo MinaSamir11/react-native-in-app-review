@@ -12,8 +12,6 @@ react native in app review, to rate on Play store, App Store, Generally, the in-
 
 # System Rating App Store API
 
-This module exposes the native iOS APIs to ask the user to rate the app in the iOS App Store directly from within the app (requires iOS >= 10.3).
-
 [![N|Solid](https://i.ibb.co/4MnN9Gf/rating.png)](https://developer.apple.com/design/human-interface-guidelines/ios/system-capabilities/ratings-and-reviews/#:~:text=If%20the%20user%20hasn't,all%20apps%20they%20have%20installed)
 
 
@@ -121,7 +119,7 @@ import InAppReview from "react-native-in-app-review";
 
 ```javascript
 
-// This Modules is only available on android version >= 21 and iOS >= 10.3  
+// This package is only available on android version >= 21 and iOS >= 10.3  
 
 
 // Give you result if version of device supported to rate app or not!
