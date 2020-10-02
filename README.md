@@ -10,7 +10,7 @@ Generally, the in-app review can be triggered at any time throughout the user jo
 
 [![N|Solid](https://developer.android.com/images/google/play/in-app-review/iar-flow.jpg)](https://developer.android.com/guide/playcore/in-app-review)
 
-# App Store API
+# System Rating App Store API
 
 This module exposes the native iOS APIs to ask the user to rate the app in the iOS App Store directly from within the app (requires iOS >= 10.3).
 
