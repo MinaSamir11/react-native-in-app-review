@@ -1,55 +1,57 @@
 apply plugin: 'com.android.library'
 
 buildscript {
+  // The Android Gradle plugin is only required when opening the android folder stand-alone.
+  // This avoids unnecessary downloads and potential conflicts when the library is included as a
+  // module dependency in an application project.
+  if (project == rootProject) {
     repositories {
-        google()
-        jcenter()
+      google()
+      jcenter()
+      maven {
+        // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+        // Matches the RN Hello World template
+        // https://github.com/facebook/react-native/blob/1e8f3b11027fe0a7514b4fc97d0798d3c64bc895/local-cli/templates/HelloWorld/android/build.gradle#L21
+        url "$projectDir/../node_modules/react-native/android"
+      }
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.0.0"
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+      classpath("com.android.tools.build:gradle:3.6.3")
     }
-}
-
-allprojects {
-    repositories {
-        google()
-        jcenter()
-        maven { url 'https://www.jitpack.io' }
-    }
+  }
 }
 
 
-
+def safeExtGet(name) {
+  rootProject.ext.has(name) ? rootProject.ext.get(name) : project.properties[name]
+}
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.0"
+  compileSdkVersion safeExtGet('compileSdkVersion')
+  buildToolsVersion safeExtGet('buildToolsVersion')
 
-    defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-        ndk {
-            abiFilters "armeabi-v7a", "x86"
-        }
+  defaultConfig {
+    minSdkVersion safeExtGet('minSdkVersion')
+    targetSdkVersion safeExtGet('targetSdkVersion')
+    versionCode 1
+    versionName "1.0"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
     }
-        compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
+  }
+  lintOptions {
+    disable 'GradleCompatible'
+  }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
 }
 
+
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-
-    //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
-
     implementation 'com.google.android.play:core:1.8.0'
-
 }
