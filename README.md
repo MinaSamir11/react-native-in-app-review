@@ -12,7 +12,7 @@ react native in app review, to rate on Play store, App Store, Generally, the in-
 
 # System Rating App Store API
 
-[![N|Solid](https://i.ibb.co/4MnN9Gf/rating.png)](https://developer.apple.com/design/human-interface-guidelines/ios/system-capabilities/ratings-and-reviews/#:~:text=If%20the%20user%20hasn't,all%20apps%20they%20have%20installed)
+[![N|Solid](https://developer.apple.com/design/human-interface-guidelines/ios/images/AppRating_2x.png)](https://developer.apple.com/design/human-interface-guidelines/ios/system-capabilities/ratings-and-reviews/#:~:text=If%20the%20user%20hasn't,all%20apps%20they%20have%20installed)
 
 
 # Getting Started
