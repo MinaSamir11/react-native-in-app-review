@@ -168,3 +168,20 @@ The system offers a consistent, nonintrusive way for apps to request ratings and
 - Don’t be a pest. Repeated rating prompts can be irritating, and may even negatively influence the user’s opinion of your app. Allow at least a week or two between rating requests and only prompt again after the user has demonstrated additional engagement with your app.
 
 - Don't use buttons or other controls to request feedback. Since the system limits how often rating prompts occur, attempting to request feedback in response to a control may result in no rating prompt being displayed.
+
+
+## How to test your code
+
+Because it's a native module, you might need to mock this package to run your tests.
+Here is an example for Jest, adapt it to your needs :
+
+```js
+// __mocks__/react-native-in-app-review.js
+
+module.exports = {
+  RequestInAppReview: jest.fn(),
+  isAvailable: jest.fn(),
+  // add more methods as needed
+};
+
+```
