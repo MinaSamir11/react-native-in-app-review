@@ -1,6 +1,8 @@
 package com.ibits.react_native_in_app_review;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.text.TextUtils;
 import androidx.annotation.NonNull;
 import android.util.Log;
@@ -12,6 +14,8 @@ import com.google.android.play.core.review.ReviewInfo;
 import com.google.android.play.core.review.ReviewManager;
 import com.google.android.play.core.review.ReviewManagerFactory;
 import com.google.android.play.core.tasks.Task;
+
+import java.util.List;
 
 public class AppReviewModule extends ReactContextBaseJavaModule {
 
@@ -58,12 +62,13 @@ public class AppReviewModule extends ReactContextBaseJavaModule {
     public static boolean isPlayStoreInstalled(Context context) {
         boolean result = false;
         String playStorePackageName = "com.android.vending";
-        
-        try {
-            String installer = context.getPackageManager()
-                    .getInstallerPackageName(playStorePackageName);
-            result = !TextUtils.isEmpty(installer);
-        } catch (Throwable e) {
+        final PackageManager pm = context.getPackageManager();
+        List<ApplicationInfo> packages = pm.getInstalledApplications(PackageManager.GET_META_DATA);
+        for (ApplicationInfo packageInfo : packages) {
+            if (packageInfo.packageName.equals(playStorePackageName)) {
+                result = true;
+                break;
+            }
         }
         return result;
     }
