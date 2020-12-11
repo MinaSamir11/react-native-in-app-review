@@ -14,13 +14,19 @@ import com.google.android.play.core.review.ReviewInfo;
 import com.google.android.play.core.review.ReviewManager;
 import com.google.android.play.core.review.ReviewManagerFactory;
 import com.google.android.play.core.tasks.Task;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 
 import java.util.List;
 
 public class AppReviewModule extends ReactContextBaseJavaModule {
 
+    private ReactApplicationContext mContext;
+
     public AppReviewModule(ReactApplicationContext reactContext) {
         super(reactContext);
+        this.mContext = reactContext;
     }
 
     @NonNull
@@ -28,13 +34,13 @@ public class AppReviewModule extends ReactContextBaseJavaModule {
     public String getName() {
         return "InAppReviewModule";
     }
-    
+
     @ReactMethod
     public void show() {
-        if(isPlayStoreInstalled(getReactApplicationContext())) {
-            ReviewManager manager = ReviewManagerFactory.create(getReactApplicationContext());
+        if(isGooglePlayServicesAvailable()) {
+            ReviewManager manager = ReviewManagerFactory.create(mContext);
             Task<ReviewInfo> request = manager.requestReviewFlow();
-            Log.e("isPlayStoreInstalled",isPlayStoreInstalled(getReactApplicationContext())+"");
+            Log.e("isGooglePlayServicesAvailable",isGooglePlayServicesAvailable()+"");
 
             request.addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
@@ -55,21 +61,13 @@ public class AppReviewModule extends ReactContextBaseJavaModule {
 
             });
         }else{
-            Log.e("isPlayStoreInstalled",isPlayStoreInstalled(getReactApplicationContext())+"");
+            Log.e("isGooglePlayServicesAvailable",isGooglePlayServicesAvailable()+"");
         }
     }
 
-    public static boolean isPlayStoreInstalled(Context context) {
-        boolean result = false;
-        String playStorePackageName = "com.android.vending";
-        final PackageManager pm = context.getPackageManager();
-        List<ApplicationInfo> packages = pm.getInstalledApplications(PackageManager.GET_META_DATA);
-        for (ApplicationInfo packageInfo : packages) {
-            if (packageInfo.packageName.equals(playStorePackageName)) {
-                result = true;
-                break;
-            }
-        }
-        return result;
+    public boolean isGooglePlayServicesAvailable() {
+        GoogleApiAvailability GMS = GoogleApiAvailability.getInstance();
+        int isGMS = GMS.isGooglePlayServicesAvailable(mContext);
+        return isGMS == ConnectionResult.SUCCESS;
     }
 }

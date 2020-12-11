@@ -16,7 +16,8 @@ buildscript {
       }
     }
     dependencies {
-      classpath("com.android.tools.build:gradle:3.6.3")
+      classpath 'com.android.tools.build:gradle:3.6.3'
+      classpath 'com.google.gms:google-services:4.3.3'
     }
   }
 }
@@ -54,4 +55,5 @@ android {
 dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation 'com.google.android.play:core:1.8.0'
+    implementation 'com.google.android.gms:play-services-base:16.0.1'
 }
