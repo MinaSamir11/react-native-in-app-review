@@ -24,7 +24,10 @@ react native in app review, to rate on Play store, App Store, Generally, the in-
 ```sh
 $ npm install react-native-in-app-review
 
+```
+OR 
 
+``` sh
 $ yarn add react-native-in-app-review
 ```
 
@@ -34,10 +37,15 @@ $ yarn add react-native-in-app-review
 
 Linking is not required in React Native 0.60 and above.
 
+Don't forget to run ```npx pod-install``` after that !
+
+- If you do not have CocoaPods already installed on your machine, run ```sudo gem install cocoapods``` to set it up the first time, after that run ```npx pod-install```
+
+
 **React Native 0.59 and below**
 
 Run `react-native link react-native-in-app-review` to link the react-native-in-app-review library.
-Then follow the instructions for your platform to link react-native-in-app-review into your project:
+after following the instructions for your platform to link react-native-in-app-review into your project:
 
 ### Manual Linking
 
@@ -51,7 +59,7 @@ Then follow the instructions for your platform to link react-native-in-app-revie
 Add the following to your `Podfile` and run `pod install`:
 
 ```ruby
-pod 'RNInAppReviewIOS.xcodeproj', :path => '../node_modules/react-native-in-app-review/ios'
+ pod 'react-native-in-app-review', :path => '../node_modules/react-native-in-app-review'
 ```
 
 </details>
@@ -172,6 +180,10 @@ The system offers a consistent, nonintrusive way for apps to request ratings and
 - Don’t be a pest. Repeated rating prompts can be irritating, and may even negatively influence the user’s opinion of your app. Allow at least a week or two between rating requests and only prompt again after the user has demonstrated additional engagement with your app.
 
 - Don't use buttons or other controls to request feedback. Since the system limits how often rating prompts occur, attempting to request feedback in response to a control may result in no rating prompt being displayed.
+
+# Please Note, To test your integration using the App Store
+
+- When you call this method while your app is still in development mode, a rating/review request view is always displayed so that you can test the user interface    and experience. However, this method has no effect when you call it in an app that you distribute using TestFlight.
 
 
 ## How to test your code
