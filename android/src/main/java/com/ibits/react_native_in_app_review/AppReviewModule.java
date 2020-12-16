@@ -45,16 +45,19 @@ public class AppReviewModule extends ReactContextBaseJavaModule {
             request.addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     // We can get the ReviewInfo object
-                    ReviewInfo reviewInfo = task.getResult();
-                    Task<Void> flow = manager.launchReviewFlow(getCurrentActivity(), reviewInfo);
+                    try {
+                        ReviewInfo reviewInfo = task.getResult();
+                        Task<Void> flow = manager.launchReviewFlow(getCurrentActivity(), reviewInfo);
 
-                    flow.addOnCompleteListener(taski -> {
-                        // The flow has finished. The API does not indicate whether the user
-                        // reviewed or not, or even whether the review dialog was shown. Thus, no
-                        // matter the result, we continue our app flow.
-                        Log.e("Review isSuccessful", "" + taski.isSuccessful());
-                    });
-
+                        flow.addOnCompleteListener(taski -> {
+                            // The flow has finished. The API does not indicate whether the user
+                            // reviewed or not, or even whether the review dialog was shown. Thus, no
+                            // matter the result, we continue our app flow.
+                            Log.e("Review isSuccessful", "" + taski.isSuccessful());
+                        });
+                    } catch (Exception e) {
+                        Log.e("getResult may have thrown an exception. This is likely an emulated device.");
+                    }
                 } else {
                     Log.e("Review Error", task.getResult().toString());
                 }
