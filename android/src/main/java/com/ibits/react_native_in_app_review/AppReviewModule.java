@@ -56,7 +56,7 @@ public class AppReviewModule extends ReactContextBaseJavaModule {
                             Log.e("Review isSuccessful", "" + taski.isSuccessful());
                         });
                     } catch (Exception e) {
-                        Log.e("getResult may have thrown an exception. This is likely an emulated device.");
+                        Log.e("Review Error", "getResult may have thrown an exception. This is likely an emulated device.");
                     }
                 } else {
                     Log.e("Review Error", task.getResult().toString());
