@@ -31,7 +31,7 @@ public class AppReviewModule extends ReactContextBaseJavaModule {
     
     @ReactMethod
     public void show() {
-        if(isPlayStoreInstalled(getReactApplicationContext())) {
+        if (isPlayStoreInstalled(getReactApplicationContext())) {
             ReviewManager manager = ReviewManagerFactory.create(getReactApplicationContext());
             Task<ReviewInfo> request = manager.requestReviewFlow();
             Log.e("isPlayStoreInstalled",isPlayStoreInstalled(getReactApplicationContext())+"");
@@ -50,11 +50,17 @@ public class AppReviewModule extends ReactContextBaseJavaModule {
                     });
 
                 } else {
-                    Log.e("Review Error", task.getResult().toString());
+                    String taskErrorMessage = "";
+                    try {
+                        taskErrorMessage = task.getResult().toString();
+                    } catch (Exception e) {
+                        taskErrorMessage = e.getMessage();
+                    }
+                    Log.e("Review Error", taskErrorMessage);
                 }
 
             });
-        }else{
+        } else {
             Log.e("isPlayStoreInstalled",isPlayStoreInstalled(getReactApplicationContext())+"");
         }
     }
