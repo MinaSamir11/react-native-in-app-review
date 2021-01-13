@@ -18,16 +18,26 @@ react native in app review, to rate on Play store, App Store, Generally, the in-
 
 [![N|Solid](https://developer.apple.com/design/human-interface-guidelines/ios/images/AppRating_2x.png)](https://developer.apple.com/design/human-interface-guidelines/ios/system-capabilities/ratings-and-reviews/#system-rating-and-review-prompts)
 
-
 # Getting Started
+
+## Installation
+
+If you use Expo to create a project [you'll just need to](https://facebook.github.io/react-native/docs/getting-started#caveats) "[eject](https://docs.expo.io/versions/latest/expokit/eject)".
+
+    ```bash
+    expo eject
+    ```
+
+Install React Native In App Review package
 
 ```sh
 $ npm install react-native-in-app-review
 
 ```
-OR 
 
-``` sh
+OR
+
+```sh
 $ yarn add react-native-in-app-review
 ```
 
@@ -37,10 +47,9 @@ $ yarn add react-native-in-app-review
 
 Linking is not required in React Native 0.60 and above.
 
-Don't forget to run ```npx pod-install``` after that !
+Don't forget to run `npx pod-install` after that !
 
-- If you do not have CocoaPods already installed on your machine, run ```sudo gem install cocoapods``` to set it up the first time, after that run ```npx pod-install```
-
+- If you do not have CocoaPods already installed on your machine, run `sudo gem install cocoapods` to set it up the first time, after that run `npx pod-install`
 
 **React Native 0.59 and below**
 
@@ -125,9 +134,7 @@ import InAppReview from "react-native-in-app-review";
 ```
 
 ```javascript
-
-// This package is only available on android version >= 21 and iOS >= 10.3  
-
+// This package is only available on android version >= 21 and iOS >= 10.3
 
 // Give you result if version of device supported to rate app or not!
 InAppReview.isAvailable();
@@ -161,7 +168,7 @@ In-app reviews only work on the following devices:
 
 - In-app reviews require your app to be published in Play Store. However, you can test your integration without publishing your app to production using either internal test tracks or internal app sharing.
 
-_____________________________________
+---
 
 # + iOS Notes:
 
@@ -169,9 +176,7 @@ _____________________________________
 
 The system offers a consistent, nonintrusive way for apps to request ratings and reviews. To use this feature, you simply identify places in your app's user experience where it makes sense to ask for feedback. If the user hasn't already given feedback, the system displays an in-app prompt that asks for a rating and an optional written review. The user can supply feedback or dismiss the prompt with a single tap. (In Settings, the user can also opt out of receiving these rating prompts for all apps they have installed.) The system automatically limits the display of the prompt to three occurrences per app within a 365-day period.
 
-
-
-# When to request an in-app-review 
+# When to request an in-app-review
 
 - Ask for a rating only after the user has demonstrated engagement with your app. For example, prompt the user upon the completion of a game level or productivity task. Never ask for a rating on first launch or during onboarding. Allow ample time to form an opinion.
 
@@ -183,8 +188,7 @@ The system offers a consistent, nonintrusive way for apps to request ratings and
 
 # Please Note, To test your integration using the App Store
 
-- When you call this method while your app is still in development mode, a rating/review request view is always displayed so that you can test the user interface    and experience. However, this method has no effect when you call it in an app that you distribute using TestFlight.
-
+- When you call this method while your app is still in development mode, a rating/review request view is always displayed so that you can test the user interface and experience. However, this method has no effect when you call it in an app that you distribute using TestFlight.
 
 ## How to test your code
 
@@ -199,5 +203,4 @@ module.exports = {
   isAvailable: jest.fn(),
   // add more methods as needed
 };
-
 ```
