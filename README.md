@@ -24,7 +24,7 @@ react native in app review, to rate on Play store, App Store, Generally, the in-
 
 If you use Expo to create a project [you'll just need to](https://facebook.github.io/react-native/docs/getting-started#caveats) "[eject](https://docs.expo.io/versions/latest/expokit/eject)".
 
-    ```bash
+    ```
     expo eject
     ```
 
