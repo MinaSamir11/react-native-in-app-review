@@ -1,5 +1,37 @@
 # react-native-in-app-review
 
+<details>
+  <summary>Pre-Release(v3.1.0-beta), 2-2-2021</summary>
+
+1- add callback if flow has finished, to be like
+
+```javascript
+InAppReview.RequestInAppReview()
+  .then((hasFlowFinishedSuccessfully) => {
+    console.log("InAppReview ", hasFlowFinishedSuccessfully);
+
+    // 1- do something ex: (navigate Home page).
+
+    // 2- another option:
+    if (hasFlowFinishedSuccessfully) {
+      // do something
+    } else {
+      // do something else.
+    }
+
+    // The flow has finished. The API does not indicate whether the user
+    // reviewed or not, or even whether the review dialog was shown. Thus, no
+    // matter the result, we continue our app flow.
+  })
+  .catch((error) => {
+    //we continue our app flow.
+
+    console.log(error);
+  });
+```
+
+</details>
+
 ![npm](https://img.shields.io/npm/dw/react-native-in-app-review?logo=npm)
 
 ![npm](https://img.shields.io/npm/v/react-native-in-app-review?logo=npm)
