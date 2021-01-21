@@ -65,4 +65,8 @@ describe('react-native-in-app-review', () => {
     Platform.Version = 19;
     expect(InAppReview.isAvailable()).toBeFalsy();
   });
+  it('should return isAvailable true in iOS if iOS >= 10.3', () => {
+    Platform.OS = 'ios';
+    expect(InAppReview.isAvailable()).toBeTruthy();
+  });
 });

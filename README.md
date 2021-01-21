@@ -8,7 +8,7 @@
 ```javascript
 InAppReview.RequestInAppReview()
   .then((hasFlowFinishedSuccessfully) => {
-    console.log("InAppReview ", hasFlowFinishedSuccessfully);
+    console.log('InAppReview ', hasFlowFinishedSuccessfully);
 
     // 1- do something ex: (navigate Home page).
 
@@ -35,6 +35,8 @@ InAppReview.RequestInAppReview()
 ![npm](https://img.shields.io/npm/dw/react-native-in-app-review?logo=npm)
 
 ![npm](https://img.shields.io/npm/v/react-native-in-app-review?logo=npm)
+
+![Travis (.com) branch](https://img.shields.io/travis/com/MinaSamir11/react-native-in-app-review/master)
 
 The Google Play In-App Review API, App store rating API lets you prompt users to submit Play Store or App store ratings and reviews without the inconvenience of leaving your app or game.
 
@@ -162,7 +164,7 @@ protected List<ReactPackage> getPackages() {
 # Usage
 
 ```javascript
-import InAppReview from "react-native-in-app-review";
+import InAppReview from 'react-native-in-app-review';
 ```
 
 ```javascript
