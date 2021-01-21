@@ -4,3 +4,6 @@
 local.properties
 .project
 gradle
+node_modules/
+test-results/
+coverage

@@ -4,7 +4,9 @@
   "description": "react native in app review, to rate on Play store, App Store, Generally, the in-app review flow (see figure 1 for play store, figure 2 for ios) can be triggered at any time throughout the user journey of your app. During the flow, the user has the ability to rate your app using the 1 to 5 star system and to add an optional comment for play store only. Once submitted, the review is sent to the Play Store or App store and eventually displayed.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --watch",
+    "test:ci": "jest --ci --coverage",
+    "lint": "eslint . --fix"
   },
   "keywords": [
     "react-native",
@@ -35,7 +37,8 @@
     "react-native-in-app-review.podspec",
     "README.md",
     "index.d.ts",
-    "index.js"
+    "index.js",
+    "__tests__"
   ],
   "repository": {
     "type": "git",
@@ -46,5 +49,41 @@
   "bugs": {
     "url": "https://github.com/MinaSamir11/react-native-in-app-review/issues"
   },
-  "homepage": "https://github.com/MinaSamir11/react-native-in-app-review#readme"
+  "homepage": "https://github.com/MinaSamir11/react-native-in-app-review#readme",
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/runtime": "^7.8.4",
+    "@react-native-community/eslint-config": "^1.1.0",
+    "@testing-library/react-hooks": "^5.0.0",
+    "babel-jest": "^25.1.0",
+    "eslint": "^6.5.1",
+    "jest": "^25.1.0",
+    "metro-react-native-babel-preset": "^0.59.0",
+    "react": "16.13.1",
+    "react-native": "0.63.4",
+    "react-test-renderer": "16.13.1",
+    "eslint-plugin-unused-imports": "^1.0.1",
+    "husky": "^4.3.8",
+    "lint-staged": "^10.5.3"
+  },
+  "jest": {
+    "preset": "react-native",
+    "modulePathIgnorePatterns": [
+      "<rootDir>/Example/"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest.setup.js"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged -v && npm run test:ci"
+    }
+  }
 }
