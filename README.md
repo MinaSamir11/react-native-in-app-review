@@ -3,7 +3,7 @@
 <details>
   <summary>Pre-Release(v3.1.0-beta), 2-2-2021</summary>
 
-1- add callback if flow has finished, to be like
+1- Add promise if flow has finished, to be like
 
 ```javascript
 InAppReview.RequestInAppReview()

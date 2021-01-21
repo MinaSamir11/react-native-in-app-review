@@ -6,15 +6,16 @@ node_js:
 cache:
   npm: false
 
-jobs:
-  include:
-    - stage: Produce Coverage
-      node_js: node
-      script: jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
-
 install:
   - npm ci
 
-script:
-  - npm run lint
-  - npm run test:ci
+jobs:
+  include:
+    - stage: Produce Coverage && run test && run lint
+      node_js: node
+      script:
+        - npm run lint
+        - npm run test
+        - npm run test:package && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+        # - npm run test:example && cd Example && cat ./coverage/lcov.info  | ../node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+        # - npm run test:ci

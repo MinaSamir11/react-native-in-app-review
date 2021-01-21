@@ -1,0 +1,11 @@
+__tests__
+.vscode
+Examples/
+coverage
+.idea
+node_modules/
+.prettierrc.js
+.eslintrc.js
+.travis.yml
+babel.config.js
+jest.setup.js
