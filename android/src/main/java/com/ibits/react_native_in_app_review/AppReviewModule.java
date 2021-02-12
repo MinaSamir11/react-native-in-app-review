@@ -1,6 +1,8 @@
 package com.ibits.react_native_in_app_review;
 
 import androidx.annotation.NonNull;
+
+import android.os.Build;
 import android.util.Log;
 
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -35,35 +37,40 @@ public class AppReviewModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void show(final Promise promise) {
         this.pendingPromise = promise;
+        if(Build.VERSION.SDK_INT >= 21) {
+            if (isGooglePlayServicesAvailable()) {
+                ReviewManager manager = ReviewManagerFactory.create(mContext);
+                Task<ReviewInfo> request = manager.requestReviewFlow();
+                Log.e("isGooglePlaySerAvail.", isGooglePlayServicesAvailable() + "");
 
-        if(isGooglePlayServicesAvailable()) {
-            ReviewManager manager = ReviewManagerFactory.create(mContext);
-            Task<ReviewInfo> request = manager.requestReviewFlow();
-            Log.e("isGooglePlaySerAvail.",isGooglePlayServicesAvailable()+"");
-
-            request.addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    // We can get the ReviewInfo object
-                    ReviewInfo reviewInfo = task.getResult();
-                    Task<Void> flow = manager.launchReviewFlow(Objects.requireNonNull(getCurrentActivity()), reviewInfo);
-                    flow.addOnCompleteListener(reviewFlow -> {
+                request.addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        // We can get the ReviewInfo object
+                        ReviewInfo reviewInfo = task.getResult();
+                        Task<Void> flow = manager.launchReviewFlow(Objects.requireNonNull(getCurrentActivity()), reviewInfo);
+                        flow.addOnCompleteListener(reviewFlow -> {
                             // The flow has finished. The API does not indicate whether the user
                             // reviewed or not, or even whether the review dialog was shown. Thus, no
                             // matter the result, we continue our app flow.
-                        if(reviewFlow.isSuccessful()) {
-                            resolvePromise(reviewFlow.isSuccessful());
-                        }else{
-                            resolvePromise(false);
-                        }
-                    });
-                } else {
-                    // There was some problem, continue regardless of the result.
-                    rejectPromise("FAILED_REQUEST_REVIEW_FLOW",new Error(Objects.requireNonNull(task.getException()).getMessage()));
-                }
-            });
+                            if (reviewFlow.isSuccessful()) {
+                                resolvePromise(reviewFlow.isSuccessful());
+                            } else {
+                                resolvePromise(false);
+                            }
+                        });
+                    } else {
+                        // There was some problem, continue regardless of the result.
+                        rejectPromise("23", new Error(Objects.requireNonNull(task.getException()).getMessage()));
+                    }
+
+                });
+
+            } else {
+                Log.e("isGooglePlaySerAvail.", isGooglePlayServicesAvailable() + "");
+                rejectPromise("22", new Error("GOOGLE_SERVICES_NOT_AVAILABLE"));
+            }
         }else{
-            Log.e("isGooglePlaySerAvail.",isGooglePlayServicesAvailable()+"");
-            rejectPromise("ERROR_GOOGLE_SERVICES",new Error("GOOGLE_SERVICES_NOT_AVAILABLE"));
+            rejectPromise("21", new Error("ERROR_DEVICE_VERSION"));
         }
     }
 
