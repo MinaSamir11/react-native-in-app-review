@@ -26,32 +26,135 @@ jest.mock('react-native/Libraries/Utilities/Platform', () => {
 });
 
 describe('react-native-in-app-review', () => {
-  it('should show Review Dialog in iOS if native module exist', () => {
+  it('should Not Call any Native method when paltform is not ios or android', async () => {
+    Platform.OS = 'windows';
+
+    await InAppReview.RequestInAppReview();
+
+    expect(
+      NativeModules.RNInAppReviewIOS.requestReview.mock.calls,
+    ).toHaveLength(0);
+
+    expect(NativeModules.InAppReviewModule.show.mock.calls).toHaveLength(0);
+  });
+
+  it('should lanuch in App review in android if native module exist and android api >= 21', async () => {
+    Platform.OS = 'android';
+    Platform.Version = 21;
+
+    await InAppReview.RequestInAppReview();
+
+    expect(NativeModules.InAppReviewModule.show.mock.calls).toHaveLength(1);
+  });
+
+  it('should show Review Dialog in iOS if native module exist', async () => {
     Platform.OS = 'ios';
 
-    InAppReview.RequestInAppReview();
+    await InAppReview.RequestInAppReview();
 
     expect(
       NativeModules.RNInAppReviewIOS.requestReview.mock.calls,
     ).toHaveLength(1);
   });
 
-  it('should lanuch in App review in android if native module exist and android api >= 21', () => {
-    Platform.OS = 'android';
-    Platform.Version = 21;
-
-    InAppReview.RequestInAppReview();
-
-    expect(NativeModules.InAppReviewModule.show.mock.calls).toHaveLength(1);
-  });
-
-  it('should not lanuch in App review in android if native module exist and android api < 21', () => {
+  it('should return and throw error (ERROR_DEVICE_VERSION) if android api < 21', async () => {
     Platform.OS = 'android';
     Platform.Version = 19;
 
-    InAppReview.RequestInAppReview();
+    const rejectDeviceVersion = () => {
+      throw new Error('ERROR_DEVICE_VERSION');
+    };
 
-    expect(NativeModules.InAppReviewModule.show.mock.calls).toHaveLength(0);
+    jest
+      .spyOn(NativeModules.InAppReviewModule, 'show')
+      .mockReturnValueOnce(rejectDeviceVersion);
+
+    await InAppReview.RequestInAppReview();
+
+    expect(NativeModules.InAppReviewModule.show.mock.results[0].value).toThrow(
+      'ERROR_DEVICE_VERSION',
+    );
+  });
+
+  it('should return and throw error in iOS Platform (ERROR_DEVICE_VERSION) if iOS < 10.3', async () => {
+    Platform.OS = 'ios';
+
+    const rejectDeviceVersion = () => {
+      throw new Error('ERROR_DEVICE_VERSION');
+    };
+
+    jest
+      .spyOn(NativeModules.RNInAppReviewIOS, 'requestReview')
+      .mockReturnValueOnce(rejectDeviceVersion);
+
+    await InAppReview.RequestInAppReview();
+
+    expect(
+      NativeModules.RNInAppReviewIOS.requestReview.mock.results[0].value,
+    ).toThrow('ERROR_DEVICE_VERSION');
+  });
+
+  it('should return and throw error (GOOGLE_SERVICES_NOT_AVAILABLE) if android device does not support GOOGLE_SERVICES', async () => {
+    Platform.OS = 'android';
+
+    const rejectGooglePlaySevices = () => {
+      throw new Error('GOOGLE_SERVICES_NOT_AVAILABLE');
+    };
+
+    jest
+      .spyOn(NativeModules.InAppReviewModule, 'show')
+      .mockReturnValueOnce(rejectGooglePlaySevices);
+
+    await InAppReview.RequestInAppReview();
+
+    expect(NativeModules.InAppReviewModule.show.mock.results[0].value).toThrow(
+      'GOOGLE_SERVICES_NOT_AVAILABLE',
+    );
+  });
+  it('should return and throw error With error code "23" in android env this refer that unexpected error happen', async () => {
+    Platform.OS = 'android';
+
+    const rejectGooglePlaySevices = () => {
+      throw new Error('23');
+    };
+
+    jest
+      .spyOn(NativeModules.InAppReviewModule, 'show')
+      .mockReturnValueOnce(rejectGooglePlaySevices);
+
+    await InAppReview.RequestInAppReview();
+
+    expect(NativeModules.InAppReviewModule.show.mock.results[0].value).toThrow(
+      '23',
+    );
+  });
+
+  it('should return true in android envirmoment when review flow finished', async () => {
+    Platform.OS = 'android';
+
+    jest
+      .spyOn(NativeModules.InAppReviewModule, 'show')
+      .mockResolvedValueOnce('true');
+
+    await InAppReview.RequestInAppReview();
+
+    expect(
+      NativeModules.InAppReviewModule.show.mock.results[0].value,
+    ).resolves.toEqual('true');
+  });
+
+  it('should return true in iOS Platform when review lanuch successuffly', async () => {
+    Platform.OS = 'ios';
+
+    jest
+      .spyOn(NativeModules.RNInAppReviewIOS, 'requestReview')
+      .mockResolvedValueOnce('true');
+
+    await InAppReview.RequestInAppReview();
+
+    expect(
+      NativeModules.RNInAppReviewIOS.requestReview.mock.results[0].value,
+    ).resolves.toEqual('true');
   });
 
   it('should return isAvailable true in android if android api >= 21', () => {

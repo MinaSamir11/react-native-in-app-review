@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {NativeModules, Platform} from 'react-native';
 
 const {InAppReviewModule, RNInAppReviewIOS} = NativeModules;
@@ -21,8 +19,6 @@ function isModuleAvailable() {
       );
     }
     return true;
-  } else {
-    return false;
   }
 }
 
@@ -41,6 +37,8 @@ export default class InAppReview {
         return true;
       } else if (Platform.OS === 'ios') {
         return isAvailable;
+      } else {
+        return false;
       }
     }
   }
