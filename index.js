@@ -19,27 +19,29 @@ function isModuleAvailable() {
       );
     }
     return true;
+  } else {
+    return false;
   }
 }
 
 export default class InAppReview {
   static RequestInAppReview() {
-    if (Platform.OS === 'android' && isModuleAvailable()) {
-      return InAppReviewModule.show();
-    } else if (Platform.OS === 'ios' && isModuleAvailable()) {
-      return RNInAppReviewIOS.requestReview({});
+    if (isModuleAvailable()) {
+      if (Platform.OS === 'android') {
+        return InAppReviewModule.show();
+      } else if (Platform.OS === 'ios') {
+        return RNInAppReviewIOS.requestReview({});
+      }
     }
   }
 
   static isAvailable() {
-    if (isModuleAvailable()) {
-      if (Platform.OS === 'android' && Platform.Version >= 21) {
-        return true;
-      } else if (Platform.OS === 'ios') {
-        return isAvailable;
-      } else {
-        return false;
-      }
+    if (Platform.OS === 'android' && Platform.Version >= 21) {
+      return true;
+    } else if (Platform.OS === 'ios') {
+      return isAvailable;
+    } else {
+      return false;
     }
   }
 }
