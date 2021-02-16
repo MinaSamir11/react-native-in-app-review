@@ -1,28 +1,27 @@
 package com.ibits.react_native_in_app_review;
 
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.text.TextUtils;
 import androidx.annotation.NonNull;
+
+import android.os.Build;
 import android.util.Log;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.Promise;
 import com.google.android.play.core.review.ReviewInfo;
 import com.google.android.play.core.review.ReviewManager;
 import com.google.android.play.core.review.ReviewManagerFactory;
 import com.google.android.play.core.tasks.Task;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.android.gms.common.GooglePlayServicesUtil;
 
-import java.util.List;
+import java.util.Objects;
 
 public class AppReviewModule extends ReactContextBaseJavaModule {
 
     private ReactApplicationContext mContext;
+    private Promise pendingPromise;
 
     public AppReviewModule(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -36,45 +35,59 @@ public class AppReviewModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void show() {
-        if(isGooglePlayServicesAvailable()) {
-            ReviewManager manager = ReviewManagerFactory.create(mContext);
-            Task<ReviewInfo> request = manager.requestReviewFlow();
-            Log.e("isGooglePlayServicesAvailable",isGooglePlayServicesAvailable()+"");
+    public void show(final Promise promise) {
+        this.pendingPromise = promise;
+        if(Build.VERSION.SDK_INT >= 21) {
+            if (isGooglePlayServicesAvailable()) {
+                ReviewManager manager = ReviewManagerFactory.create(mContext);
+                Task<ReviewInfo> request = manager.requestReviewFlow();
+                Log.e("isGooglePlaySerAvail.", isGooglePlayServicesAvailable() + "");
 
-            request.addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    // We can get the ReviewInfo object
-                    try {
+                request.addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        // We can get the ReviewInfo object
                         ReviewInfo reviewInfo = task.getResult();
-                        Task<Void> flow = manager.launchReviewFlow(getCurrentActivity(), reviewInfo);
-
-                        flow.addOnCompleteListener(taski -> {
+                        Task<Void> flow = manager.launchReviewFlow(Objects.requireNonNull(getCurrentActivity()), reviewInfo);
+                        flow.addOnCompleteListener(reviewFlow -> {
                             // The flow has finished. The API does not indicate whether the user
                             // reviewed or not, or even whether the review dialog was shown. Thus, no
                             // matter the result, we continue our app flow.
-                            Log.e("Review isSuccessful", "" + taski.isSuccessful());
+                            if (reviewFlow.isSuccessful()) {
+                                resolvePromise(reviewFlow.isSuccessful());
+                            } else {
+                                resolvePromise(false);
+                            }
                         });
-                    } catch (Exception e) {
-                        Log.e("Review Error", "getResult may have thrown an exception. This is likely an emulated device.");
+                    } else {
+                        // There was some problem, continue regardless of the result.
+                        rejectPromise("23", new Error(Objects.requireNonNull(task.getException()).getMessage()));
                     }
-                } else {
-                    String taskErrorMessage = "";
-                    try {
-                        taskErrorMessage = task.getResult().toString();
-                    } catch (Exception e) {
-                        taskErrorMessage = e.getMessage();
-                    }
-                    Log.e("Review Error", taskErrorMessage);
-                }
+                });
 
-            });
+            } else {
+                Log.e("isGooglePlaySerAvail.", isGooglePlayServicesAvailable() + "");
+                rejectPromise("22", new Error("GOOGLE_SERVICES_NOT_AVAILABLE"));
+            }
         }else{
-            Log.e("isGooglePlayServicesAvailable",isGooglePlayServicesAvailable()+"");
+            rejectPromise("21", new Error("ERROR_DEVICE_VERSION"));
         }
     }
 
-    public boolean isGooglePlayServicesAvailable() {
+    private void rejectPromise(String code, Error err) {
+        if (this.pendingPromise != null) {
+            this.pendingPromise.reject(code, err);
+            this.pendingPromise = null;
+        }
+    }
+
+    private void resolvePromise(boolean hasFlowFinishedSuccessfully) {
+        if (this.pendingPromise != null) {
+            this.pendingPromise.resolve(hasFlowFinishedSuccessfully);
+            this.pendingPromise = null;
+        }
+    }
+
+    private boolean isGooglePlayServicesAvailable() {
         GoogleApiAvailability GMS = GoogleApiAvailability.getInstance();
         int isGMS = GMS.isGooglePlayServicesAvailable(mContext);
         return isGMS == ConnectionResult.SUCCESS;
