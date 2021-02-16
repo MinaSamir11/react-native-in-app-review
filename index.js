@@ -29,7 +29,7 @@ export default class InAppReview {
     if (isModuleAvailable()) {
       if (Platform.OS === 'android') {
         return InAppReviewModule.show();
-      } else if (Platform.OS === 'ios') {
+      } else {
         return RNInAppReviewIOS.requestReview({});
       }
     }

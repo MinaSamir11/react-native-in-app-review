@@ -25,7 +25,18 @@ jest.mock('react-native/Libraries/Utilities/Platform', () => {
   return platform;
 });
 
-describe('react-native-in-app-review', () => {
+jest.mock('react-native/Libraries/BatchedBridge/NativeModules', () => {
+  let _NativeModules = {};
+
+  _NativeModules = {
+    InAppReviewModule: {show: jest.fn()},
+    RNInAppReviewIOS: {requestReview: jest.fn(), isAvailable: jest.fn()},
+  };
+
+  return _NativeModules;
+});
+
+describe('test-react-native-in-app-review-when-NativeModules-exist', () => {
   it('should Not Call any Native method when paltform is not ios or android', async () => {
     Platform.OS = 'windows';
 

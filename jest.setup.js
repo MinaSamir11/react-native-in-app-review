@@ -9,18 +9,6 @@
  */
 /* eslint-env jest */
 
-import {NativeModules} from 'react-native';
-
-// Mock the RNInAppReviewIOS native module to allow us to unit test the JavaScript code
-NativeModules.RNInAppReviewIOS = {
-  requestReview: jest.fn(),
-  isAvailable: jest.fn(),
-};
-
-NativeModules.InAppReviewModule = {
-  show: jest.fn(),
-};
-
 // Reset the mocks before each test
 global.beforeEach(() => {
   jest.resetAllMocks();
