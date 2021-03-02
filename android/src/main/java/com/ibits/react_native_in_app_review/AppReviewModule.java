@@ -2,6 +2,7 @@ package com.ibits.react_native_in_app_review;
 
 import androidx.annotation.NonNull;
 
+import android.app.Activity;
 import android.os.Build;
 import android.util.Log;
 
@@ -47,7 +48,14 @@ public class AppReviewModule extends ReactContextBaseJavaModule {
                     if (task.isSuccessful()) {
                         // We can get the ReviewInfo object
                         ReviewInfo reviewInfo = task.getResult();
-                        Task<Void> flow = manager.launchReviewFlow(Objects.requireNonNull(getCurrentActivity()), reviewInfo);
+                        Activity currentActivity = getCurrentActivity();
+
+                        if (currentActivity == null) {
+                            rejectPromise("24", new Error("Activity doesn't exist"));
+                            return;
+                        }
+
+                        Task<Void> flow = manager.launchReviewFlow(currentActivity, reviewInfo);
                         flow.addOnCompleteListener(reviewFlow -> {
                             // The flow has finished. The API does not indicate whether the user
                             // reviewed or not, or even whether the review dialog was shown. Thus, no
