@@ -12,6 +12,19 @@ The Google Play In-App Review API, App store rating API lets you prompt users to
 
 react native in app review, to rate on Play store, App Store, Generally, the in-app review flow (see figure 1 for play store, figure 2 for ios) can be triggered at any time throughout the user journey of your app. During the flow, the user has the ability to rate your app using the 1 to 5 star system and to add an optional comment for play store only. Once submitted, the review is sent to the Play Store or App store and eventually displayed.
 
+
+ ## Would you like to support me?
+
+<a href="https://www.buymeacoffee.com/MinaSamir" target="_blank">
+  <img
+    src="https://cdn.buymeacoffee.com/buttons/default-orange.png"
+    alt="Buy Me A Coffee"
+    height="40px"
+  />
+</a>
+<br />
+
+
 # Android, iOS platform.
 
 # Google Play In-App Review API
@@ -253,13 +266,3 @@ module.exports = {
 };
 ```
 
- ## Show Your Support
-
-<a href="https://www.buymeacoffee.com/MinaSamir" target="_blank">
-  <img
-    src="https://cdn.buymeacoffee.com/buttons/default-orange.png"
-    alt="Buy Me A Coffee"
-    height="40px"
-  />
-</a>
-<br />
