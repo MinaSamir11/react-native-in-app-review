@@ -252,3 +252,14 @@ module.exports = {
   // add more methods as needed
 };
 ```
+
+ ## Show Your Support
+
+<a href="https://www.buymeacoffee.com/MinaSamir" target="_blank">
+  <img
+    src="https://cdn.buymeacoffee.com/buttons/default-orange.png"
+    alt="Buy Me A Coffee"
+    height="40px"
+  />
+</a>
+<br />
