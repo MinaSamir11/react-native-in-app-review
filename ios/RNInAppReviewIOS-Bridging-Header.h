@@ -3,7 +3,3 @@
 #else
 #import <React/RCTBridgeModule.h>
 #endif
-
-@interface RNInAppReviewIOS : NSObject <RCTBridgeModule>
-
-@end
