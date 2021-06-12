@@ -51,7 +51,7 @@ public class AppReviewModule extends ReactContextBaseJavaModule {
                         Activity currentActivity = getCurrentActivity();
 
                         if (currentActivity == null) {
-                            rejectPromise("24", new Error("Activity doesn't exist"));
+                            rejectPromise("24", new Error("ACTIVITY_DOESN'T_EXIST"));
                             return;
                         }
 
