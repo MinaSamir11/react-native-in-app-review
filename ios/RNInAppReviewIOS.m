@@ -1,33 +1,18 @@
-#import "RNInAppReviewIOS.h"
+#import <Foundation/Foundation.h>
 #import <StoreKit/SKStoreReviewController.h>
+#import <UIKit/UIKit.h>
+#import "RCTBridgeModule.h"
 
-@implementation RNInAppReviewIOS
-
+@interface RCT_EXTERN_MODULE(RNInAppReviewIOS, NSObject)
 
 - (dispatch_queue_t)methodQueue
 {
   return dispatch_get_main_queue();
 }
 
-RCT_EXPORT_MODULE()
-
-- (NSDictionary *)constantsToExport
-{
-  return @{
-    @"isAvailable": [SKStoreReviewController class] ? @(YES) : @(NO)
-  };
-}
-
-RCT_EXPORT_METHOD(requestReview:
-    resolver:(RCTPromiseResolveBlock)resolve
-    rejecter:(RCTPromiseRejectBlock)reject) {
-      if (@available(iOS 10.3, *)) {
-        [SKStoreReviewController requestReview];
-         resolve(@"true");
-      }else{
-         reject(@"21",@"ERROR_DEVICE_VERSION",nil);
-      }
-}
+RCT_EXTERN_METHOD(requestReview:
+          (RCTPromiseResolveBlock)resolve
+          rejecter:(RCTPromiseRejectBlock)reject)
 
 + (BOOL)requiresMainQueueSetup
 {
