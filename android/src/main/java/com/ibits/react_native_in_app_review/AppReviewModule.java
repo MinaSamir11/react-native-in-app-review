@@ -40,9 +40,10 @@ public class AppReviewModule extends ReactContextBaseJavaModule {
         this.pendingPromise = promise;
         if(Build.VERSION.SDK_INT >= 21) {
             if (isGooglePlayServicesAvailable()) {
+                Log.e("isGooglePlaySerAvail.", isGooglePlayServicesAvailable() + "");
+
                 ReviewManager manager = ReviewManagerFactory.create(mContext);
                 Task<ReviewInfo> request = manager.requestReviewFlow();
-                Log.e("isGooglePlaySerAvail.", isGooglePlayServicesAvailable() + "");
 
                 request.addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -57,14 +58,11 @@ public class AppReviewModule extends ReactContextBaseJavaModule {
 
                         Task<Void> flow = manager.launchReviewFlow(currentActivity, reviewInfo);
                         flow.addOnCompleteListener(reviewFlow -> {
+                            resolvePromise(reviewFlow.isSuccessful());
                             // The flow has finished. The API does not indicate whether the user
                             // reviewed or not, or even whether the review dialog was shown. Thus, no
                             // matter the result, we continue our app flow.
-                            if (reviewFlow.isSuccessful()) {
-                                resolvePromise(reviewFlow.isSuccessful());
-                            } else {
-                                resolvePromise(false);
-                            }
+                       
                         });
                     } else {
                         // There was some problem, continue regardless of the result.
