@@ -12,8 +12,7 @@ The Google Play In-App Review API, App store rating API lets you prompt users to
 
 react native in app review, to rate on Play store, App Store, Generally, the in-app review flow (see figure 1 for play store, figure 2 for ios) can be triggered at any time throughout the user journey of your app. During the flow, the user has the ability to rate your app using the 1 to 5 star system and to add an optional comment for play store only. Once submitted, the review is sent to the Play Store or App store and eventually displayed.
 
-
- ## Would you like to support me?
+## Would you like to support me?
 
 <a href="https://www.buymeacoffee.com/MinaSamir" target="_blank">
   <img
@@ -23,7 +22,6 @@ react native in app review, to rate on Play store, App Store, Generally, the in-
   />
 </a>
 <br />
-
 
 # Android, iOS platform.
 
@@ -203,9 +201,8 @@ InAppReview.RequestInAppReview()
 | ERROR_DEVICE_VERSION          | 21          | This Device not supported to lanuch InAppReview                                                                                                            | ✅  | ✅      |
 | GOOGLE_SERVICES_NOT_AVAILABLE | 22          | This Device doesn't support google play services                                                                                                           | ❌  | ✅      |
 | [DYNAMIC ERROR NAME]          | 23          | Unexpected error occur may return different error from different user and device check code number to get discovered errors messages that could be happen. | ❌  | ✅      |
-| ACTIVITY_DOESN'T_EXIST        | 24          | Unexpected error occur while getting activity | ❌  | ✅      |
-| SCENE_DOESN'T_EXIST        | 25          | Unexpected error occur while getting scene | ✅ |  ❌      |
-
+| ACTIVITY_DOESN'T_EXIST        | 24          | Unexpected error occur while getting activity                                                                                                              | ❌  | ✅      |
+| SCENE_DOESN'T_EXIST           | 25          | Unexpected error occur while getting scene                                                                                                                 | ✅  | ❌      |
 
 # + Android Notes:
 
@@ -231,6 +228,20 @@ In-app reviews only work on the following devices:
 # Please Note, To test your integration using the Google Play Store
 
 - In-app reviews require your app to be published in Play Store. However, you can test your integration without publishing your app to production using either internal test tracks or internal app sharing.
+
+# Troubleshooting:
+
+As you integrate and test in-app reviews, you might run into some issues. The following table outlines the most common issues that can prevent the in-app review dialog from displaying in your app:
+
+| Issue                                                                               | Solution                                                                                                                                                             |
+| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Your app is not published yet in the Play Store.                                    | Your app doesn't have to be published to test, but your app's applicationID must be available at least in the internal testing track.                                |
+| The user account can't review the app.                                              | Your app must be in the user's Google Play library. To add your app to the user's library, download your app from the Play Store using that user's account.          |
+| The primary account is not selected in the Play Store.                              | When multiple accounts are available in the device, ensure that the primary account is the one selected in the Play Store.                                           |
+| The user account is protected (for example, with enterprise accounts).              | Use a Gmail account instead.                                                                                                                                         |
+| The user has already reviewed the app.                                              | Delete the review directly from Play Store.                                                                                                                          |
+| The quota has been reached.                                                         | Use an internal test track or internal app sharing.                                                                                                                  |
+| There is an issue with the Google Play Store or Google Play Services on the device. | This commonly occurs when the Play Store was sideloaded onto the device. Use a different device that has a valid version of the Play Store and Google Play Services. |
 
 ---
 
@@ -268,4 +279,3 @@ module.exports = {
   // add more methods as needed
 };
 ```
-
