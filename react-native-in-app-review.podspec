@@ -11,10 +11,8 @@ Pod::Spec.new do |s|
   s.platform       = :ios, "9.0"
   s.source         = { :git => "https://github.com/MinaSamir11/react-native-in-app-review.git", :tag => "v#{s.version}" }
   s.source_files   = "ios/*.{h,m,swift}"
-
+  s.swift_version = "5.0"
   s.preserve_paths = "README.md", "package.json", "index.js"
-
-
   s.requires_arc = true
   s.dependency "React"
 
