@@ -198,7 +198,7 @@ InAppReview.RequestInAppReview()
 
 | Error Name                    | Code Number | Description                                                                                                                                                | iOS | Android |
 | ----------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------- |
-| ERROR_DEVICE_VERSION          | 21          | This Device not supported to lanuch InAppReview                                                                                                            | ✅  | ✅      |
+| ERROR_DEVICE_VERSION          | 21          | This Device not supported to launch InAppReview                                                                                                            | ✅  | ✅      |
 | GOOGLE_SERVICES_NOT_AVAILABLE | 22          | This Device doesn't support google play services                                                                                                           | ❌  | ✅      |
 | [DYNAMIC ERROR NAME]          | 23          | Unexpected error occur may return different error from different user and device check code number to get discovered errors messages that could be happen. | ❌  | ✅      |
 | ACTIVITY_DOESN'T_EXIST        | 24          | Unexpected error occur while getting activity                                                                                                              | ❌  | ✅      |
