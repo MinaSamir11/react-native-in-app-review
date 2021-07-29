@@ -204,7 +204,22 @@ InAppReview.RequestInAppReview()
 | ACTIVITY_DOESN'T_EXIST        | 24          | Unexpected error occur while getting activity                                                                                                              | ❌  | ✅      |
 | SCENE_DOESN'T_EXIST           | 25          | Unexpected error occur while getting scene                                                                                                                 | ✅  | ❌      |
 
-# + Android Notes:
+# + Android guidlelines and notes:
+
+# Read very well:
+
+After publishing you app to test your integration in production or either internal test tracks or internal app sharing and prompt in app review flow you may face issue that not showing review popup after you followed all guidelines very well,
+**Note that this issue was classified as google play api issue.**
+
+We found most probably solutions that may be successful to launch review popup:
+
+- Make sure you have installed latest google play store update.
+- Note that the popup will not work if you are signed in to the Play Store with a GSuite ID. Once you switch to an @gmail email address, this will start working.
+- Make sure there is only one Google account in the test device.
+- Please note, that user must be a tester if you are testing on any testing track.
+- CLEAR CACHE and CLEAR STORAGE from Google Play Store app.
+- Remove existing app rating in Google Play Store.
+- after doing all of pervious solutions, remove your app and reinstall it.
 
 # When to request an in-app review
 
