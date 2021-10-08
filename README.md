@@ -162,7 +162,7 @@ InAppReview.RequestInAppReview()
 
     // when return true in ios it means review flow lanuched to user.
     console.log(
-      'InAppReview in ios has lanuched successfully',
+      'InAppReview in ios has launched successfully',
       hasFlowFinishedSuccessfully,
     );
 
