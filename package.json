@@ -1,92 +1,92 @@
 {
-    "name": "react-native-in-app-review",
-    "version": "3.2.2",
-    "description": "react native in app review, to rate on Play store, App Store, Generally, the in-app review flow (see figure 1 for play store, figure 2 for ios) can be triggered at any time throughout the user journey of your app. During the flow, the user has the ability to rate your app using the 1 to 5 star system and to add an optional comment for play store only. Once submitted, the review is sent to the Play Store or App store and eventually displayed.",
-    "main": "index.js",
-    "scripts": {
-        "test:package": "jest --ci --coverage __tests__/InAppReview-test.js  InAppReviewWithoutNativeModules-test.js",
-        "test:example": "cd Example && jest --ci --coverage",
-        "test": "npm run test:package && npm run test:example",
-        "test:ci": "jest --ci --coverage",
-        "lint": "eslint . --fix"
-    },
-    "keywords": [
-        "react-native",
-        "review",
-        "app-review",
-        "in-app-review",
-        "react-native-in-app-review",
-        "store-kit",
-        "android",
-        "ios",
-        "app store",
-        "play store",
-        "rate your app",
-        "review is sent to the Play Store",
-        "review is sent to the App Store",
-        "rating",
-        "view",
-        "react-component",
-        "react-native-component"
+  "name": "react-native-in-app-review",
+  "version": "3.2.3",
+  "description": "react native in app review, to rate on Play store, App Store, Generally, the in-app review flow (see figure 1 for play store, figure 2 for ios) can be triggered at any time throughout the user journey of your app. During the flow, the user has the ability to rate your app using the 1 to 5 star system and to add an optional comment for play store only. Once submitted, the review is sent to the Play Store or App store and eventually displayed.",
+  "main": "index.js",
+  "scripts": {
+    "test:package": "jest --ci --coverage __tests__/InAppReview-test.js  InAppReviewWithoutNativeModules-test.js",
+    "test:example": "cd Example && jest --ci --coverage",
+    "test": "npm run test:package && npm run test:example",
+    "test:ci": "jest --ci --coverage",
+    "lint": "eslint . --fix"
+  },
+  "keywords": [
+    "react-native",
+    "review",
+    "app-review",
+    "in-app-review",
+    "react-native-in-app-review",
+    "store-kit",
+    "android",
+    "ios",
+    "app store",
+    "play store",
+    "rate your app",
+    "review is sent to the Play Store",
+    "review is sent to the App Store",
+    "rating",
+    "view",
+    "react-component",
+    "react-native-component"
+  ],
+  "files": [
+    "android/src/main/AndroidManifest.xml",
+    "android/src/main/java/",
+    "android/build.gradle",
+    "android/",
+    "ios/",
+    "!ios/build/",
+    "react-native-in-app-review.podspec",
+    "README.md",
+    "index.d.ts",
+    "index.js",
+    "__tests__"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MinaSamir11/react-native-in-app-review.git"
+  },
+  "author": "Mina Samir Shafik <menasamer11@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MinaSamir11/react-native-in-app-review/issues"
+  },
+  "homepage": "https://github.com/MinaSamir11/react-native-in-app-review#readme",
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/runtime": "^7.8.4",
+    "@react-native-community/eslint-config": "^1.1.0",
+    "@testing-library/react-hooks": "^5.0.0",
+    "babel-jest": "^25.1.0",
+    "coveralls": "^3.1.0",
+    "eslint": "^6.5.1",
+    "eslint-plugin-unused-imports": "^1.0.1",
+    "husky": "^4.3.8",
+    "jest": "^25.1.0",
+    "lint-staged": "^10.5.3",
+    "metro-react-native-babel-preset": "^0.59.0",
+    "react": "16.13.1",
+    "react-native": "0.63.4",
+    "react-test-renderer": "16.13.1"
+  },
+  "jest": {
+    "preset": "react-native",
+    "modulePathIgnorePatterns": [
+      "<rootDir>/Example/"
     ],
-    "files": [
-        "android/src/main/AndroidManifest.xml",
-        "android/src/main/java/",
-        "android/build.gradle",
-        "android/",
-        "ios/",
-        "!ios/build/",
-        "react-native-in-app-review.podspec",
-        "README.md",
-        "index.d.ts",
-        "index.js",
-        "__tests__"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/MinaSamir11/react-native-in-app-review.git"
-    },
-    "author": "Mina Samir Shafik <menasamer11@gmail.com>",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/MinaSamir11/react-native-in-app-review/issues"
-    },
-    "homepage": "https://github.com/MinaSamir11/react-native-in-app-review#readme",
-    "devDependencies": {
-        "@babel/core": "^7.8.4",
-        "@babel/runtime": "^7.8.4",
-        "@react-native-community/eslint-config": "^1.1.0",
-        "@testing-library/react-hooks": "^5.0.0",
-        "babel-jest": "^25.1.0",
-        "coveralls": "^3.1.0",
-        "eslint": "^6.5.1",
-        "eslint-plugin-unused-imports": "^1.0.1",
-        "husky": "^4.3.8",
-        "jest": "^25.1.0",
-        "lint-staged": "^10.5.3",
-        "metro-react-native-babel-preset": "^0.59.0",
-        "react": "16.13.1",
-        "react-native": "0.63.4",
-        "react-test-renderer": "16.13.1"
-    },
-    "jest": {
-        "preset": "react-native",
-        "modulePathIgnorePatterns": [
-            "<rootDir>/Example/"
-        ],
-        "setupFilesAfterEnv": [
-            "<rootDir>/jest.setup.js"
-        ]
-    },
-    "lint-staged": {
-        "*.{js,jsx}": [
-            "eslint --fix",
-            "prettier --write"
-        ]
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged -v && npm run test:ci"
-        }
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest.setup.js"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged -v && npm run test:ci"
     }
+  }
 }
