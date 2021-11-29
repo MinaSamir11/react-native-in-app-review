@@ -37,11 +37,7 @@ react native in app review, to rate on Play store, App Store, Generally, the in-
 
 ## Installation
 
-If you use Expo to create a project [you'll just need to](https://facebook.github.io/react-native/docs/getting-started#caveats) "[eject](https://docs.expo.io/versions/latest/expokit/eject)".
-
-```
- expo eject
-```
+If you use Expo to create a project, you can create a [development build](https://docs.expo.dev/development/introduction/) for your project using [EAS Build](https://docs.expo.dev/build/introduction/) or [eject to the bare workflow](https://docs.expo.dev/workflow/customizing/).
 
 Install React Native In App Review package
 
