@@ -1,11 +1,9 @@
 # react-native-in-app-review
 
 ![npm](https://img.shields.io/npm/dw/react-native-in-app-review?logo=npm)
-
+[![npm downloads](https://img.shields.io/npm/dm/react-native-in-app-review.svg) ](//npmjs.com/package/react-native-in-app-review)
 ![npm](https://img.shields.io/npm/v/react-native-in-app-review?logo=npm)
-
 ![Travis (.com) branch](https://img.shields.io/travis/com/MinaSamir11/react-native-in-app-review/master)
-
 ![Coveralls github branch](https://img.shields.io/coveralls/github/MinaSamir11/react-native-in-app-review/master)
 
 The Google Play In-App Review API, App store rating API lets you prompt users to submit Play Store or App store ratings and reviews without the inconvenience of leaving your app or game.
