@@ -288,3 +288,21 @@ module.exports = {
   // add more methods as needed
 };
 ```
+  
+Or, if you have a Jest setup file:
+
+  ```js
+  // jest.setup.js
+  
+  jest.mock("react-native-in-app-review", () => ({
+  RequestInAppReview: jest.fn(),
+  isAvailable: jest.fn(),
+}));
+  ```
+  
+You might have to use the following value in your mock to resolve `TypeError: Cannot read property 'then' of undefined`:
+  ```js
+  RequestInAppReview: jest.fn().mockImplementation(() => {
+    return Promise.resolve();
+  }),
+  ```
