@@ -7,7 +7,6 @@ buildscript {
   if (project == rootProject) {
     repositories {
       google()
-      jcenter()
       maven {
         // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
         // Matches the RN Hello World template
