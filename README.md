@@ -19,7 +19,11 @@ react native in app review, to rate on Play store, App Store, Generally, the in-
     height="40px"
   />
 </a>
+
 <br />
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/MinaSamir111?country.x=EG&locale.x=en_US)
+<br />
+
 
 # Android, iOS platform.
 
