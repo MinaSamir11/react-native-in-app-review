@@ -19,10 +19,16 @@ react native in app review, to rate on Play store, App Store, Generally, the in-
     height="40px"
   />
 </a>
+<br />
+<a href="https://paypal.me/MinaSamir111">
+  <img 
+     src="https://raw.githubusercontent.com/stefan-niedermann/paypal-donate-button/master/paypal-donate-button.png" 
+     alt="Donate with PayPal" 
+     width="165px"
+     height="65px"/>
+</a>
 
-<br />
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/MinaSamir111?country.x=EG&locale.x=en_US)
-<br />
+
 
 
 # Android, iOS platform.
