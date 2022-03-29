@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 #import <StoreKit/SKStoreReviewController.h>
 #import <UIKit/UIKit.h>
-#import "RCTBridgeModule.h"
+#import <React/RCTBridgeModule.h>
 
 @interface RCT_EXTERN_MODULE(RNInAppReviewIOS, NSObject)
 
