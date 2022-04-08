@@ -14,18 +14,19 @@ react native in app review, to rate on Play store, App Store, Generally, the in-
 
 <a href="https://www.buymeacoffee.com/MinaSamir" target="_blank">
   <img
-    src="https://cdn.buymeacoffee.com/buttons/default-orange.png"
+    src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
     alt="Buy Me A Coffee"
-    height="40px"
+    width="200px"
+    height="55px"
   />
 </a>
 <br />
 <a href="https://paypal.me/MinaSamir111">
   <img 
      src="https://raw.githubusercontent.com/stefan-niedermann/paypal-donate-button/master/paypal-donate-button.png" 
-     alt="Donate with PayPal" 
-     width="165px"
-     height="65px"/>
+     alt="Buy me a coffe with PayPal" 
+     width="200px"
+     height="70px"/>
 </a>
 
 
