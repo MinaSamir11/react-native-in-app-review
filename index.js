@@ -35,7 +35,7 @@ export default class InAppReview {
     }
   }
 
-  static RequestInAppCommentAppGallery() {
+  static requestInAppCommentAppGallery() {
     if (isModuleAvailable()) {
       if (Platform.OS === 'android') {
         return InAppReviewModule.showInAppCommentHMS();
