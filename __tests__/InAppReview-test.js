@@ -58,6 +58,15 @@ describe('test-react-native-in-app-review-when-NativeModules-exist', () => {
     expect(NativeModules.InAppReviewModule.show.mock.calls).toHaveLength(1);
   });
 
+  it('should lanuch in App comment in android if native module exist', async () => {
+    Platform.OS = 'android';
+    Platform.Version = 21;
+
+    await InAppReview.requestInAppCommentAppGallery();
+
+    expect(NativeModules.InAppReviewModule.show.mock.calls).toHaveLength(1);
+  });
+
   it('should show Review Dialog in iOS if native module exist', async () => {
     Platform.OS = 'ios';
 
