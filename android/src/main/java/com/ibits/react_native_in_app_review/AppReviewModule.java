@@ -3,9 +3,11 @@ package com.ibits.react_native_in_app_review;
 import androidx.annotation.NonNull;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
 
+import com.facebook.react.bridge.ActivityEventListener;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -19,15 +21,20 @@ import com.google.android.gms.common.GoogleApiAvailability;
 
 import java.util.Objects;
 
-public class AppReviewModule extends ReactContextBaseJavaModule {
+public class AppReviewModule extends ReactContextBaseJavaModule implements ActivityEventListener {
 
-    private ReactApplicationContext mContext;
+    private final ReactApplicationContext mContext;
     private Promise pendingPromise;
 
     public AppReviewModule(ReactApplicationContext reactContext) {
         super(reactContext);
         this.mContext = reactContext;
+        this.mContext.addActivityEventListener(this);
     }
+
+
+    @Override
+    public void onNewIntent(Intent intent) { }
 
     @NonNull
     @Override
@@ -62,7 +69,7 @@ public class AppReviewModule extends ReactContextBaseJavaModule {
                             // The flow has finished. The API does not indicate whether the user
                             // reviewed or not, or even whether the review dialog was shown. Thus, no
                             // matter the result, we continue our app flow.
-                       
+
                         });
                     } else {
                         // There was some problem, continue regardless of the result.
@@ -71,12 +78,26 @@ public class AppReviewModule extends ReactContextBaseJavaModule {
                 });
 
             } else {
-                Log.e("isGooglePlaySerAvail.", isGooglePlayServicesAvailable() + "");
-                rejectPromise("22", new Error("GOOGLE_SERVICES_NOT_AVAILABLE"));
+                Log.e("isGooglePlaySerAvail._NOTTTT", isGooglePlayServicesAvailable() + "");
+
             }
-        }else{
+        } else {
             rejectPromise("21", new Error("ERROR_DEVICE_VERSION"));
         }
+    }
+
+    @ReactMethod
+    public void showInAppCommentHMS () {
+        Activity currentActivity = getCurrentActivity();
+
+        Intent intent = new Intent("com.huawei.appmarket.intent.action.guidecomment");
+        intent.setPackage("com.huawei.appmarket");
+        if (currentActivity != null) {
+            currentActivity.startActivityForResult(intent, 1001);
+        }else {
+            rejectPromise("24", new Error("ACTIVITY_DOESN'T_EXIST"));
+        }
+
     }
 
     private void rejectPromise(String code, Error err) {
@@ -93,9 +114,53 @@ public class AppReviewModule extends ReactContextBaseJavaModule {
         }
     }
 
+    private void resolvePromiseHMS(int resultCode) {
+        if (this.pendingPromise != null) {
+            this.pendingPromise.resolve(resultCode);
+            this.pendingPromise = null;
+        }
+    }
+
     private boolean isGooglePlayServicesAvailable() {
         GoogleApiAvailability GMS = GoogleApiAvailability.getInstance();
         int isGMS = GMS.isGooglePlayServicesAvailable(mContext);
         return isGMS == ConnectionResult.SUCCESS;
+    }
+
+    @Override
+    public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent intent) {
+        if (requestCode == 1001) {
+            if (resultCode == 101) {
+                // Ensure that your app has been correctly released on AppGallery.
+                Log.e("huawei_errorrr1 Ensure that your app has been correctly released on AppGallery", isGooglePlayServicesAvailable() + "");
+                rejectPromise("101", new Error("Ensure that your app has been correctly released on AppGallery"));
+            } else if (resultCode == 0){
+                Log.e("huawei_errorrr1 in app comment Unknown error.", "Unknown error");
+                rejectPromise("0", new Error("in app comment Unknown error"));
+            }
+            else if (resultCode == 102){
+                Log.e("huawei_errorrr1 rating submitted", "rating done");
+                resolvePromiseHMS(102);
+            } else if (resultCode == 103){
+                Log.e("huawei_errorrr1 Comment submitted", "rating done");
+                resolvePromiseHMS(103);
+            } else if (resultCode == 104) {
+                rejectPromise("104", new Error("check the HUAWEI ID sign-in status"));
+                // Prompt the user to check the HUAWEI ID sign-in status.
+                Log.e("huawei_errorrr1 check the HUAWEI ID sign-in status",  "");
+            } else if (resultCode == 105) {
+                rejectPromise("105", new Error("The user does not meet the conditions for displaying the comment pop-up"));
+                Log.e("huawei_errorrr1 The user does not meet the conditions for displaying the comment pop-up", "");
+            } else if (resultCode == 106){
+                rejectPromise("106", new Error("The commenting function is disabled"));
+                Log.e(" huawei_errorrr1 The commenting function is disabled", "disabled");
+            } else if (resultCode == 107){
+                rejectPromise("107", new Error("The in-app commenting service is not supported. (Apps released in the Chinese mainland do not support this service.)"));
+                Log.e("huawei_errorrr1 The in-app commenting service is not supported. (Apps released in the Chinese mainland do not support this service.)", "in-app commenting service is not supported");
+            } else if (resultCode == 108){
+                rejectPromise("108", new Error("The user canceled the comment"));
+                Log.e("huawei_errorrr1 The user canceled the comment.", "user canceled");
+            }
+        }
     }
 }

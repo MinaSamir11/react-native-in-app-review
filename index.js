@@ -35,6 +35,14 @@ export default class InAppReview {
     }
   }
 
+  static RequestInAppCommentAppGallery() {
+    if (isModuleAvailable()) {
+      if (Platform.OS === 'android') {
+        return InAppReviewModule.showInAppCommentHMS();
+      }
+    }
+  }
+
   static isAvailable() {
     if (Platform.OS === 'android' && Platform.Version >= 21) {
       return true;
