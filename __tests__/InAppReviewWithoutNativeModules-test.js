@@ -53,4 +53,14 @@ describe('test-react-native-in-app-review-without-NativeModules-exist', () => {
       InAppReview.RequestInAppReview();
     }).toThrow(errorMessageExpected);
   });
+
+  it('should throw error in calling in app comment Module if module not exist', async () => {
+    Platform.OS = 'android';
+
+    const errorMessageExpected =
+      'InAppReview native module not available, did you forget to link the library?';
+    expect(() => {
+      InAppReview.requestInAppCommentAppGallery();
+    }).toThrow(errorMessageExpected);
+  });
 });

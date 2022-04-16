@@ -29,7 +29,7 @@ jest.mock('react-native/Libraries/BatchedBridge/NativeModules', () => {
   let _NativeModules = {};
 
   _NativeModules = {
-    InAppReviewModule: {show: jest.fn()},
+    InAppReviewModule: {show: jest.fn(), showInAppCommentHMS: jest.fn()},
     RNInAppReviewIOS: {requestReview: jest.fn(), isAvailable: jest.fn()},
   };
 
@@ -64,7 +64,9 @@ describe('test-react-native-in-app-review-when-NativeModules-exist', () => {
 
     await InAppReview.requestInAppCommentAppGallery();
 
-    expect(NativeModules.InAppReviewModule.show.mock.calls).toHaveLength(1);
+    expect(
+      NativeModules.InAppReviewModule.showInAppCommentHMS.mock.calls,
+    ).toHaveLength(1);
   });
 
   it('should show Review Dialog in iOS if native module exist', async () => {
