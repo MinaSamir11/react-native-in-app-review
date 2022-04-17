@@ -40,7 +40,7 @@ react native in app review, to rate on Play store, App Store, Generally, the in-
 
 # Huawei App Gallery In-App Comment API
 
-[![N|Solid](https://alliance-communityfile-drcn.dbankcdn.com/FileServer/getFile/cmtyPub/011/111/111/0000000000011111111.20210930165217.85977721887109915940441030648773:50520929085414:2800:4622AF71C3311CECF3522B63A6E74D32F51C64886F111B8580149E78F111D88E.png?needInitFileName=true?needInitFileName=true)](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-comments-introduction-0000001063018306)
+[![N|Solid](https://github.com/MinaSamir11/react-native-in-app-review/blob/master/Example/huawei-in-app-comment.png)](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-comments-introduction-0000001063018306)
 
 # Getting Started
 
