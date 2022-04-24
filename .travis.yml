@@ -12,8 +12,7 @@ install:
 jobs:
   include:
     - stage: Produce Coverage && run test && run lint
-    node_js: 
-       -17
+    node_js: node
       script:
         - npm run lint
         - npm run test
