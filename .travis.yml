@@ -1,8 +1,7 @@
 language: node_js
 
 node_js:
-  - 17
-  - node  
+  - "17"
 cache:
   npm: false
 
