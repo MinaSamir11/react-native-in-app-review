@@ -14,6 +14,6 @@ Pod::Spec.new do |s|
   s.swift_version = "5.0"
   s.preserve_paths = "README.md", "package.json", "index.js"
   s.requires_arc = true
-  s.dependency "React"
+  s.dependency "React-Core"
 
 end
