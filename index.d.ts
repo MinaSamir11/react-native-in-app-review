@@ -1,7 +1,9 @@
 declare module 'react-native-in-app-review';
 
-export function RequestInAppReview(): Promise<boolean>;
+declare const ReactNativeInAppReview: {
+  RequestInAppReview(): Promise<boolean>;
+  requestInAppCommentAppGallery(): Promise<any>;
+  isAvailable(): boolean;
+};
 
-export function requestInAppCommentAppGallery(): Promise<any>;
-
-export function isAvailable(): boolean;
+export default ReactNativeInAppReview;
