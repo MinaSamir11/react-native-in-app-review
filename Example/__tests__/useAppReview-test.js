@@ -3,7 +3,7 @@ import {renderHook, act} from '@testing-library/react-hooks';
 import useAppReview from '../src/screens/reviewApp/useAppReview';
 import InAppReview from 'react-native-in-app-review';
 
-describe('App Review Hook Behavoir', () => {
+describe('App Review Hook Behavior', () => {
   const currentDate = new Date('2021-01-10T11:01:58.135Z');
   global.Date = class extends Date {
     constructor(date) {
