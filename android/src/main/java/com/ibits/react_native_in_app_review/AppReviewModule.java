@@ -80,7 +80,7 @@ public class AppReviewModule extends ReactContextBaseJavaModule implements Activ
 
             } else {
                 Log.e("isGooglePlaySerAvail._NOTTTT", isGooglePlayServicesAvailable() + "");
-
+                rejectPromise("22", new Error("GOOGLE_SERVICES_NOT_AVAILABLE"));
             }
         } else {
             rejectPromise("21", new Error("ERROR_DEVICE_VERSION"));
