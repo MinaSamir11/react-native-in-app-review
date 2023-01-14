@@ -53,6 +53,6 @@ android {
 dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
-    implementation "com.google.android.play:core:${safeExtGet('playCoreVersion')}"
+  implementation "com.google.android.play:review:${safeExtGet('playReviewVersion')}"
     implementation "com.google.android.gms:play-services-base:${safeExtGet('playServicesVersion')}"
 }
