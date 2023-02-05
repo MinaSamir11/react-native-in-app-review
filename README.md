@@ -11,7 +11,8 @@ The Google Play In-App Review API, App store rating API lets you prompt users to
 react native in app review, to rate on Play store, App Store, Generally, the in-app review flow (see figure 1 for play store, figure 2 for ios) can be triggered at any time throughout the user journey of your app. During the flow, the user has the ability to rate your app using the 1 to 5 star system and to add an optional comment for play store only. Once submitted, the review is sent to the Play Store or App store and eventually displayed.
 
 ## Would you like to support me?
- If you would like help me cheer up, buying me a cup of coffee will make my life really happy and get much energy out of it.
+
+If you would like help me cheer up, buying me a cup of coffee will make my life really happy and get much energy out of it.
 
 <a href="https://www.buymeacoffee.com/MinaSamir" target="_blank">
   <img
@@ -26,7 +27,6 @@ react native in app review, to rate on Play store, App Store, Generally, the in-
 <br />
 
 [![Paypal](https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png)](https://paypal.me/MinaSamir111)
-
 
 # iOS, android platform.
 
@@ -49,6 +49,31 @@ react native in app review, to rate on Play store, App Store, Generally, the in-
 If you use Expo to create a project, you can create a [development build](https://docs.expo.dev/development/introduction/) for your project using [EAS Build](https://docs.expo.dev/build/introduction/) or [eject to the bare workflow](https://docs.expo.dev/workflow/customizing/).
 
 Install React Native In App Review package
+
+## (A1) For The latest version and fixed issues and future releases do the following steps (Paid User):
+
+##The only thing a User has to do is to register here on https://www.paydevs.com and direct his package manager to our registry at https://npm.paydevs.com.
+
+Using npm or pnpm this means:
+
+```
+npm set registry https://npm.paydevs.com/
+npm login
+npm update
+```
+
+And if you are using yarn:
+
+```
+yarn config set registry https://npm.paydevs.com/
+yarn login
+yarn upgrade
+
+```
+
+## (A1.1)After you finished from sign-up in npm.paydevs, Go to [PayDevs, react-native-in-app-review](https://npm.paydevs.com/-/web/detail/react-native-in-app-review) to complete the package installation steps.
+
+## (B1) Normal Installation (Free User), (latest version will be avaliable on the public registry after 10 days from releasing on PayDevs).
 
 ```sh
 $ npm install react-native-in-app-review
@@ -197,22 +222,21 @@ InAppReview.RequestInAppReview()
     // Check table for errors and code number that can return in catch.
     console.log(error);
   });
-
 ```
 
 # Huawei In-App Comment (App Gallery Review)
 
 Before You Start
-- First of all, you must integrate HMS into the project. I am not going to explain these steps You can check  [this article](https://medium.com/huawei-developers/android-integrating-your-apps-with-huawei-hms-core-1f1e2a090e98).
+
+- First of all, you must integrate HMS into the project. I am not going to explain these steps You can check [this article](https://medium.com/huawei-developers/android-integrating-your-apps-with-huawei-hms-core-1f1e2a090e98).
 - You have released your app officially on AppGallery.
 - Users have installed AppGallery 11.3.2.302 or later and signed in using HUAWEI IDs.
 
-
-```javascript 
-  // trigger UI in app comment to request review for App Gallery;
- InAppReview.requestInAppCommentAppGallery() 
-   .then((resultCode) => {
-    // when return resultCode (102,103) in android it means Rating submitted or Comment submitted 
+```javascript
+// trigger UI in app comment to request review for App Gallery;
+InAppReview.requestInAppCommentAppGallery()
+  .then((resultCode) => {
+    // when return resultCode (102,103) in android it means Rating submitted or Comment submitted
     console.log('in app comment app gallery', resultCode);
   })
   .catch((error) => {
@@ -221,8 +245,8 @@ Before You Start
     // Check table for errors appears in app gallery and code number that can return in catch.
     console.log(error);
   });
+```
 
- ```
 # Error could happen and code number (Google play, App Store) Table
 
 | Error Name                    | Code Number | Description                                                                                                                                                | iOS | Android |
@@ -232,24 +256,19 @@ Before You Start
 | [DYNAMIC ERROR NAME]          | 23          | Unexpected error occur may return different error from different user and device check code number to get discovered errors messages that could be happen. | ❌  | ✅      |
 | ACTIVITY_DOESN'T_EXIST        | 24          | Unexpected error occur while getting activity                                                                                                              | ❌  | ✅      |
 | SCENE_DOESN'T_EXIST           | 25          | Unexpected error occur while getting scene                                                                                                                 | ✅  | ❌      |
- 
- 
- # Error could happen and code number (App Gallery) Table
 
-| Error Name                    | Code Number | Description                                                                                                                                                | Android |
-| ----------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| ACTIVITY_DOESN'T_EXIST        | 24          | Unexpected error occur while getting activity                                                                                                              | ✅      |
-| Ensure that your app has been correctly released on AppGallery        | 101          | Ensure that your app has been correctly released on AppGallery                                                                                                              | ✅      |
-| check the HUAWEI ID sign-in status        | 104          | check the HUAWEI ID sign-in status                                                                                                              | ✅      |
-| The user does not meet the conditions for displaying the comment pop-up        | 105          | The user does not meet the conditions for displaying the comment pop-up                                                                                                              | ✅      |
-| The commenting function is disabled        | 106          | The commenting function is disabled                                                                                                              | ✅      |
-| The in-app commenting service is not supported. (Apps released in the Chinese mainland do not support this service.)        | 107          | The in-app commenting service is not supported. (Apps released in the Chinese mainland do not support this service.)                                                                                                              | ✅      |
-| The user canceled the comment.        | 108          | The user canceled the comment.                                                                                                              | ✅      |
-| in app comment Unknown error        | 0          | Unknown Error                                                                                                              | ✅      |
+# Error could happen and code number (App Gallery) Table
 
-
-
-
+| Error Name                                                                                                           | Code Number | Description                                                                                                          | Android |
+| -------------------------------------------------------------------------------------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------- | ------- |
+| ACTIVITY_DOESN'T_EXIST                                                                                               | 24          | Unexpected error occur while getting activity                                                                        | ✅      |
+| Ensure that your app has been correctly released on AppGallery                                                       | 101         | Ensure that your app has been correctly released on AppGallery                                                       | ✅      |
+| check the HUAWEI ID sign-in status                                                                                   | 104         | check the HUAWEI ID sign-in status                                                                                   | ✅      |
+| The user does not meet the conditions for displaying the comment pop-up                                              | 105         | The user does not meet the conditions for displaying the comment pop-up                                              | ✅      |
+| The commenting function is disabled                                                                                  | 106         | The commenting function is disabled                                                                                  | ✅      |
+| The in-app commenting service is not supported. (Apps released in the Chinese mainland do not support this service.) | 107         | The in-app commenting service is not supported. (Apps released in the Chinese mainland do not support this service.) | ✅      |
+| The user canceled the comment.                                                                                       | 108         | The user canceled the comment.                                                                                       | ✅      |
+| in app comment Unknown error                                                                                         | 0           | Unknown Error                                                                                                        | ✅      |
 
 # + Android guidlelines and notes:
 
@@ -290,11 +309,11 @@ In-app reviews only work on the following devices:
 # Please Note, To test your integration using the Google Play Store
 
 - In-app reviews require your app to be published in Play Store. However, you can test your integration without publishing your app to production using either internal test tracks or internal app sharing.
- 
+
 # Please Note, To test your integration using the App Gallery Store
+
 - If your app has been released on AppGallery, you need to release an open testing version for it and then perform the testing.
 - If your app has not been released on AppGallery, you need to release an open testing version for it and then perform the testing. Otherwise, app authentication will fail.
-
 
 # Troubleshooting (Google Play):
 
@@ -311,17 +330,18 @@ As you integrate and test in-app reviews, you might run into some issues. The fo
 | There is an issue with the Google Play Store or Google Play Services on the device. | This commonly occurs when the Play Store was sideloaded onto the device. Use a different device that has a valid version of the Play Store and Google Play Services. |
 
 ---
- 
- # Troubleshooting (App Gallery):
+
+# Troubleshooting (App Gallery):
 
 Device Restrictions
+
 - Users must have installed AppGallery 11.3.2.302 or later.
 - Users must have installed HMS Core (APK) on their devices.
 
-| Application Restrictions                                                                               | Restrictions                                                                                                                                                             |
-| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Applicable scope                                    | The in-app comments function is available only for apps released on AppGallery outside the Chinese mainland.                                |
-| Audiences                                              | - The in-app comment pop-up is displayed only for users who have signed in to AppGallery using HUAWEI IDs. <br/> - The in-app comment pop-up is displayed only for users who have opened your app for 10 or more times within the last three months since you have called the in-app comments API <br/>  - If the user has submitted a rating and a comment for the current app version, the in-app comment pop-up will not be displayed for the user in this app version. The in-app comment pop-up will be displayed again only after the user updates the app to a later version, has not submitted a rating and a comment for more than a calendar year, and the preceding conditions for displaying the pop-up are met. <br/> - If a user chooses not to receive any app comment notifications under Me > Settings on AppGallery, the pop-up will not be displayed for the user. |
+| Application Restrictions | Restrictions                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Applicable scope         | The in-app comments function is available only for apps released on AppGallery outside the Chinese mainland.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Audiences                | - The in-app comment pop-up is displayed only for users who have signed in to AppGallery using HUAWEI IDs. <br/> - The in-app comment pop-up is displayed only for users who have opened your app for 10 or more times within the last three months since you have called the in-app comments API <br/> - If the user has submitted a rating and a comment for the current app version, the in-app comment pop-up will not be displayed for the user in this app version. The in-app comment pop-up will be displayed again only after the user updates the app to a later version, has not submitted a rating and a comment for more than a calendar year, and the preceding conditions for displaying the pop-up are met. <br/> - If a user chooses not to receive any app comment notifications under Me > Settings on AppGallery, the pop-up will not be displayed for the user. |
 
 ---
 
@@ -359,21 +379,22 @@ module.exports = {
   // add more methods as needed
 };
 ```
-  
+
 Or, if you have a Jest setup file:
 
-  ```js
-  // jest.setup.js
-  
-  jest.mock("react-native-in-app-review", () => ({
+```js
+// jest.setup.js
+
+jest.mock('react-native-in-app-review', () => ({
   RequestInAppReview: jest.fn(),
   isAvailable: jest.fn(),
 }));
-  ```
-  
+```
+
 You might have to use the following value in your mock to resolve `TypeError: Cannot read property 'then' of undefined`:
-  ```js
-  RequestInAppReview: jest.fn().mockImplementation(() => {
-    return Promise.resolve();
-  }),
-  ```
+
+```js
+RequestInAppReview: jest.fn().mockImplementation(() => {
+  return Promise.resolve();
+}),
+```
