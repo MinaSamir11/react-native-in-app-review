@@ -1,4 +1,12 @@
-apply plugin: 'com.android.library'
+apply plugin: "com.android.library"
+
+// def isNewArchitectureEnabled() {
+//     return project.hasProperty("newArchEnabled") && project.newArchEnabled == "true"
+// }
+
+// if (isNewArchitectureEnabled()) {
+//   apply plugin: "com.facebook.react"
+// }
 
 buildscript {
   // The Android Gradle plugin is only required when opening the android folder stand-alone.
@@ -15,8 +23,8 @@ buildscript {
       }
     }
     dependencies {
-      classpath 'com.android.tools.build:gradle:3.6.3'
-      classpath 'com.google.gms:google-services:4.3.3'
+      classpath "com.android.tools.build:gradle:7.3.1"
+      classpath "com.google.gms:google-services:4.3.3"
     }
   }
 }
@@ -27,21 +35,31 @@ def safeExtGet(name) {
 }
 
 android {
-  compileSdkVersion safeExtGet('compileSdkVersion')
+  compileSdkVersion safeExtGet("compileSdkVersion", 31)
 
   defaultConfig {
-    minSdkVersion safeExtGet('minSdkVersion')
-    targetSdkVersion safeExtGet('targetSdkVersion')
+    minSdkVersion safeExtGet("minSdkVersion", 21)
+    targetSdkVersion safeExtGet("targetSdkVersion", 31)
     versionCode 1
     versionName "1.0"
+    // buildConfigField("boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString())
   }
+  // sourceSets {
+  //   main {
+  //       if (isNewArchitectureEnabled()) {
+  //           java.srcDirs += ["src/newarch"]
+  //       } else {
+  //           java.srcDirs += ["src/oldarch"]
+  //       }
+  //   }
+  // }
   buildTypes {
     release {
       minifyEnabled false
     }
   }
   lintOptions {
-    disable 'GradleCompatible'
+    disable "GradleCompatible"
   }
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
@@ -53,6 +71,6 @@ android {
 dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
-  implementation "com.google.android.play:review:${safeExtGet('playReviewVersion')}"
+    implementation "com.google.android.play:review:${safeExtGet('playReviewVersion')}"
     implementation "com.google.android.gms:play-services-base:${safeExtGet('playServicesVersion')}"
 }

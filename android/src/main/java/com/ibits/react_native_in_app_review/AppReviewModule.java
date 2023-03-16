@@ -48,7 +48,7 @@ public class AppReviewModule extends ReactContextBaseJavaModule implements Activ
         this.pendingPromise = promise;
         if(Build.VERSION.SDK_INT >= 21) {
             if (isGooglePlayServicesAvailable()) {
-                Log.e("isGooglePlaySerAvail.", isGooglePlayServicesAvailable() + "");
+                Log.e("msg->GP", isGooglePlayServicesAvailable() + "");
 
                 ReviewManager manager = ReviewManagerFactory.create(mContext);
                 Task<ReviewInfo> request = manager.requestReviewFlow();
@@ -79,7 +79,7 @@ public class AppReviewModule extends ReactContextBaseJavaModule implements Activ
                 });
 
             } else {
-                Log.e("isGooglePlaySerAvail._NOTTTT", isGooglePlayServicesAvailable() + "");
+                Log.e("msg->GP", isGooglePlayServicesAvailable() + "");
                 rejectPromise("22", new Error("GOOGLE_SERVICES_NOT_AVAILABLE"));
             }
         } else {
@@ -141,34 +141,34 @@ public class AppReviewModule extends ReactContextBaseJavaModule implements Activ
         if (requestCode == 1001) {
             if (resultCode == 101) {
                 // Ensure that your app has been correctly released on AppGallery.
-                Log.e("huawei_errorrr1 Ensure that your app has been correctly released on AppGallery", isGooglePlayServicesAvailable() + "");
+                Log.e("msg->101", isGooglePlayServicesAvailable() + "");
                 rejectPromiseHMS("101", new Error("Ensure that your app has been correctly released on AppGallery"));
             } else if (resultCode == 0){
-                Log.e("huawei_errorrr1 in app comment Unknown error.", "Unknown error");
+                Log.e("msg->0", "Unknown error");
                 rejectPromiseHMS("0", new Error("in app comment Unknown error"));
             }
             else if (resultCode == 102){
-                Log.e("huawei_errorrr1 rating submitted", "rating done");
+                Log.e("msg->102", "rating done");
                 resolvePromiseHMS(102);
             } else if (resultCode == 103){
-                Log.e("huawei_errorrr1 Comment submitted", "rating done");
+                Log.e("msg->103", "rating done");
                 resolvePromiseHMS(103);
             } else if (resultCode == 104) {
                 rejectPromiseHMS("104", new Error("check the HUAWEI ID sign-in status"));
                 // Prompt the user to check the HUAWEI ID sign-in status.
-                Log.e("huawei_errorrr1 check the HUAWEI ID sign-in status",  "");
+                Log.e("msg->104",  "");
             } else if (resultCode == 105) {
                 rejectPromiseHMS("105", new Error("The user does not meet the conditions for displaying the comment pop-up"));
-                Log.e("huawei_errorrr1 The user does not meet the conditions for displaying the comment pop-up", "");
+                Log.e("msg->105", "");
             } else if (resultCode == 106){
                 rejectPromiseHMS("106", new Error("The commenting function is disabled"));
-                Log.e(" huawei_errorrr1 The commenting function is disabled", "disabled");
+                Log.e(" msg->106", "disabled");
             } else if (resultCode == 107){
                 rejectPromiseHMS("107", new Error("The in-app commenting service is not supported. (Apps released in the Chinese mainland do not support this service.)"));
-                Log.e("huawei_errorrr1 The in-app commenting service is not supported. (Apps released in the Chinese mainland do not support this service.)", "in-app commenting service is not supported");
+                Log.e("msg->107", "in-app commenting service is not supported");
             } else if (resultCode == 108){
                 rejectPromiseHMS("108", new Error("The user canceled the comment"));
-                Log.e("huawei_errorrr1 The user canceled the comment.", "user canceled");
+                Log.e("msg->108", "user canceled");
             }
         }
     }
