@@ -32,7 +32,7 @@ If you would like help me cheer up, buying me a cup of coffee will make my life 
 
 # System Rating App Store API
 
-[![N|Solid](https://developer.apple.com/design/human-interface-guidelines/ios/images/AppRating_2x.png)](https://developer.apple.com/design/human-interface-guidelines/ios/system-capabilities/ratings-and-reviews/#system-rating-and-review-prompts)
+[![N|Solid](https://docs-assets.developer.apple.com/published/1d5f982affa4088005ecd7c8d6edddff/patterns-ratings-and-reviews-intro@2x.png)](https://developer.apple.com/design/human-interface-guidelines/ios/system-capabilities/ratings-and-reviews/#system-rating-and-review-prompts)
 
 # Google Play In-App Review API
 
