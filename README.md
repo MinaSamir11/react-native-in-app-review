@@ -6,14 +6,15 @@
 ![Travis (.com) branch](https://img.shields.io/travis/com/MinaSamir11/react-native-in-app-review/master)
 ![Coveralls github branch](https://img.shields.io/coveralls/github/MinaSamir11/react-native-in-app-review/master)
 
-The Google Play In-App Review API, App store rating API lets you prompt users to submit Play Store or App store ratings and reviews without the inconvenience of leaving your app or game.
+The Google Play In-App Review API, App Store rating API let you prompt users to submit Play Store or App Store ratings and reviews without the inconvenience of leaving your app or game.
 
-react native in app review, to rate on Play store, App Store, Generally, the in-app review flow (see figure 1 for play store, figure 2 for ios) can be triggered at any time throughout the user journey of your app. During the flow, the user has the ability to rate your app using the 1 to 5 star system and to add an optional comment for play store only. Once submitted, the review is sent to the Play Store or App store and eventually displayed.
+react-native in-app-review, to rate on Play Store, and App Store, Generally, the in-app review flow (see figure 1 for Play Store, figure 2 for ios) can be triggered at any time throughout the user journey of your app. During the flow, the user has the ability to rate your app using the 1 to 5-star system and to add an optional comment for play store only. Once submitted, the review is sent to the Play Store or App Store and eventually displayed.
 
 ## Would you like to support me?
+If you would like to help me cheer up, I'm looking for a #part-time job that will make my life really happy, D.M at LinkedIn.
 
-If you would like help me cheer up, buying me a cup of coffee will make my life really happy and get much energy out of it.
 
+If you would like to help me cheer up, buying me a cup of coffee will make my life really happy and give me a lot of energy.
 <a href="https://www.buymeacoffee.com/MinaSamir" target="_blank">
   <img
     src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
