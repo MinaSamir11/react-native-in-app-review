@@ -13,7 +13,11 @@ class RNInAppReviewIOS: NSObject {
       }.first
 
       if let scene = activeWindowScene as? UIWindowScene {
-        SKStoreReviewController.requestReview(in: scene)
+        if #available(iOS 18, *) {
+          AppStore.requestReview(in: scene)
+        } else {
+          SKStoreReviewController.requestReview(in: scene)
+        }
         resolve("true");
       } else {
         reject("25","SCENE_DOESN'T_EXIST",nil);
