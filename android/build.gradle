@@ -8,6 +8,16 @@ apply plugin: "com.android.library"
 //   apply plugin: "com.facebook.react"
 // }
 
+def safeExtGet(name, fallback = null) {
+    if (rootProject.ext.has(name)) {
+      return rootProject.ext.get(name)
+    }
+    if (project.hasProperty(name)) {
+      return project.property(name)
+    }
+    return fallback
+}
+
 buildscript {
   // The Android Gradle plugin is only required when opening the android folder stand-alone.
   // This avoids unnecessary downloads and potential conflicts when the library is included as a
@@ -29,17 +39,12 @@ buildscript {
   }
 }
 
-
-def safeExtGet(name) {
-  rootProject.ext.has(name) ? rootProject.ext.get(name) : project.properties[name]
-}
-
 android {
-  compileSdkVersion safeExtGet("compileSdkVersion", 31)
+  compileSdkVersion safeExtGet('compileSdkVersion', 31)
 
   defaultConfig {
-    minSdkVersion safeExtGet("minSdkVersion", 21)
-    targetSdkVersion safeExtGet("targetSdkVersion", 31)
+    minSdkVersion safeExtGet('minSdkVersion', 21)
+    targetSdkVersion safeExtGet('targetSdkVersion', 31)
     versionCode 1
     versionName "1.0"
     // buildConfigField("boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString())
