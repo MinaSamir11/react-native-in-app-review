@@ -11,11 +11,12 @@ The Google Play In-App Review API, App Store rating API let you prompt users to 
 react-native in-app-review, to rate on Play Store, and App Store, Generally, the in-app review flow (see figure 1 for Play Store, figure 2 for ios) can be triggered at any time throughout the user journey of your app. During the flow, the user has the ability to rate your app using the 1 to 5-star system and to add an optional comment for Play Store only. Once submitted, the review is sent to the Play Store or App Store and eventually displayed.
 
 ## Would you like to support me?
+
 If you want to help me cheer up, I'm always looking for freelance tasks or a #part-time job, D.M on LinkedIn.
 
 If you would like to help me cheer up, buying me a cup of coffee will make my life really happy and give me a lot of energy.
 <a href="https://www.buymeacoffee.com/MinaSamir" target="_blank">
-  <img
+<img
     src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
     alt="Buy Me A Coffee"
     width="200px"
@@ -73,7 +74,7 @@ yarn upgrade
 
 ## (A1.1)After you finished from sign-up in npm.paydevs, Go to [PayDevs, react-native-in-app-review](https://npm.paydevs.com/-/web/detail/react-native-in-app-review) to complete the package installation steps.
 
-## (B1) Normal Installation (Free User), (latest version will be avaliable on the public registry after 10 days from releasing on PayDevs).
+## (B1) Normal Installation (Free User), (latest version will be available on the public registry after 10 days from releasing on PayDevs).
 
 ```sh
 $ npm install react-native-in-app-review
@@ -190,7 +191,7 @@ InAppReview.RequestInAppReview()
     // when return true in android it means user finished or close review flow
     console.log('InAppReview in android', hasFlowFinishedSuccessfully);
 
-    // when return true in ios it means review flow lanuched to user.
+    // when return true in ios it means review flow launched to user.
     console.log(
       'InAppReview in ios has launched successfully',
       hasFlowFinishedSuccessfully,
@@ -198,7 +199,7 @@ InAppReview.RequestInAppReview()
 
     // 1- you have option to do something ex: (navigate Home page) (in android).
     // 2- you have option to do something,
-    // ex: (save date today to lanuch InAppReview after 15 days) (in android and ios).
+    // ex: (save date today to launch InAppReview after 15 days) (in android and ios).
 
     // 3- another option:
     if (hasFlowFinishedSuccessfully) {
@@ -212,13 +213,13 @@ InAppReview.RequestInAppReview()
     // matter the result, we continue our app flow.
 
     // for ios
-    // the flow lanuched successfully, The API does not indicate whether the user
+    // the flow launched successfully, The API does not indicate whether the user
     // reviewed or not, or he/she closed flow yet as android, Thus, no
     // matter the result, we continue our app flow.
   })
   .catch((error) => {
     //we continue our app flow.
-    // we have some error could happen while lanuching InAppReview,
+    // we have some error could happen while launching InAppReview,
     // Check table for errors and code number that can return in catch.
     console.log(error);
   });
@@ -241,7 +242,7 @@ InAppReview.requestInAppCommentAppGallery()
   })
   .catch((error) => {
     //we continue our app flow.
-    // we have some error could happen while lanuching in app comment,
+    // we have some error could happen while launching in app comment,
     // Check table for errors appears in app gallery and code number that can return in catch.
     console.log(error);
   });
@@ -270,11 +271,11 @@ InAppReview.requestInAppCommentAppGallery()
 | The user canceled the comment.                                                                                       | 108         | The user canceled the comment.                                                                                       | ✅      |
 | in app comment Unknown error                                                                                         | 0           | Unknown Error                                                                                                        | ✅      |
 
-# + Android guidlelines and notes:
+# + Android guidelines and notes:
 
 # Read very well for (Google Play):
 
-After publishing you app to test your integration in production or either internal test tracks or internal app sharing and prompt in app review flow you may face issue that not showing review popup after you followed all guidelines very well,
+After publishing your app to test your integration in production or either internal test tracks or internal app sharing and prompt in app review flow you may face issue that not showing review popup after you followed all guidelines very well,
 **Note that this issue was classified as google play api issue.**
 
 We found most probably solutions that may be successful to launch review popup:
@@ -285,7 +286,7 @@ We found most probably solutions that may be successful to launch review popup:
 - Please note, that user must be a tester if you are testing on any testing track.
 - CLEAR CACHE and CLEAR STORAGE from Google Play Store app.
 - Remove existing app rating in Google Play Store.
-- after doing all of pervious solutions, remove your app and reinstall it.
+- after doing all of previous solutions, remove your app and reinstall it.
 
 # When to request an in-app review
 
